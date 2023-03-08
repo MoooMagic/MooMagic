@@ -9,35 +9,35 @@
 
 # 📲About Website
 
-* Inspiration
+* Inspiration : 
 This project is inspired by the efforts of our farmers who work hard for their and our livelihood for 365 days. They never fail to feed us by their tough efforts in the crops field in the schorching sun.
 
-* What it does
+* What it does : 
 This project is a website which allows the farmers to create their own account and help them in listing their dairy products and many more in a very easy steps so that they can get their MSP (Minimum Selling Price) on their products without any agents direct to the end users.
 
-* How we built it
+* How we built it : 
 We have built the websites using MERN(MongoDB, ExpressJS, React and NodeJS)
 
-* Challenges we ran into
+* Challenges we ran into : 
 As we had to provide the platform like an ecommerce website where farmers and customers are two different class to get their respect User Interface. This was the major challenge to us.
 
-* Accomplishments that we're proud of
+* Accomplishments that we're proud of : 
 Proper working web is itself the accomplishment we must proud of.
 
-* What we learned
+* What we learned : 
 We learned how to serve with a platform to Indian Farmers .
 
-* What's next for COVID-19 Tracker
+* What's next for COVID-19 Tracker : 
 AI and ML for making the website more better for farmers.
 
-* Built With
+* Built With : 
 MongoDB
 ExpressJS
 React
 NodeJS
 
 
-## Contributers
+## Contributers : 
 ## 🧑‍💻 UI/UX Designer
 
 - [Shahbaz Hussain](https://www.github.com/shahbazhussaincse)
@@ -56,15 +56,15 @@ NodeJS
 ## 🧑‍💻 Backend Developer
 
 - [Debarghya Mondal](https://www.github.com/debarghyamondal)
-## 🌟 Demo
+## 🌟 Demo : 
 
 
 link to demo : https://github.com/MoooMagic/MooMagic
 
 
-## 🔗 Links
+## 🔗 Links : 
 [![github](https://img.shields.io/badge/github-0A66C2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MoooMagic/MooMagic)
 
-## 💻 Tech Stack
+## 💻 Tech Stack : 
 MongoDB, ExpressJS, React and NodeJS
 
