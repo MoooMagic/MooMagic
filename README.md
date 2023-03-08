@@ -4,7 +4,7 @@
 
 ## 🌐Moo Magic
 
-![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitt12x0FvC3dC3HiXi0tX_TJj3AwCCCM_tN6rKaWw26CJwlpIU29gr9QibmbHh6itfc8A2f-OSZ2dcdFtUDAHZlD7O-2nBkuwg8KUDh6gqec6K4vXjFs_Od-yekcFBi1xQ0YjdIr_DGr8YjeJGAxpwchXvqlkxbWliXLw_Xf6PmwYNfVuLkgcxtPzI/s320/MooMagiUI.png)
+![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge5yrJP0tu6S84-8-85kceNPWAsB9cTPMHdGREPvImxHdMKnTTxBk9QgSG7YhXPrERI735rtGgKAK6L7Zk3moWitGdVV6jjc3XOZ_livLQkQvfdNHY8_q5pepqLm2NyiXY51Zm5o3ZCXzqpg6AdJmbch8PceRowfgPiZ3ItekC-4-GE-z24Y9lWY8f/w380-h640/MooMagiUI_1.png)
 
 
 # 📲About Website
