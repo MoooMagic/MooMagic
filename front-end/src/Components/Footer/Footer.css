@@ -1,0 +1,90 @@
+/* Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+/* Footer */
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #70491d;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+/* Footer Box */
+.footerBox {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 25px;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* Each Contact Box */
+.contactBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+/* Contact Box Para */
+.contactBox p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 2px 0;
+    padding: 0;
+}
+
+/* Contact Box Para First Element */
+.contactBox p:nth-child(1) {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+
+/* Map */
+.footerMap {
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.footerSocial {
+    width: 425px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fffdfd;
+    border-radius: 30px;
+    padding: 5px 25px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    margin-bottom: 10px;
+}
+
+.footerSocial .footerIcon {
+    cursor: pointer;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width:900px) {
+    .footerBox {
+        align-items: center;
+        flex-wrap: wrap-reverse;
+    }
+
+    .contactBox {
+        align-items: center;
+        text-align: left;
+        margin: 15px 0;
+    }
+
+}
