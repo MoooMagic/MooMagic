@@ -1,0 +1,157 @@
+/* Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+/* Berkshire Swash */
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #E3F9FA;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+/* Navbar Logo */
+.nav-logo {
+    width: 60px;
+}
+
+.nav-logo-text {
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+/* Navbar List Item */
+.nav-item {
+    list-style: none;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+    color: #000000;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.under {
+    width: 0px;
+    height: 2px;
+    background-color: #043296;
+    opacity: 0;
+    transition: width 0.5s ease-in-out, opacity 5ms linear;
+    transform-origin: 0;
+}
+
+.nav-item:hover>.under {
+    width: 100%;
+    opacity: 1;
+}
+
+/* Navbar Right */
+.nav-right {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Navbar Button */
+.nav-btn {
+    background-color: #86a2db;
+    border-style: none;
+    text-transform: uppercase;
+    padding: 3px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    cursor: pointer;
+}
+
+/* Navbar Button Hover Effect */
+.nav-btn:hover {
+    background-color: #7199e4;
+}
+
+/* SignUp Buton Style */
+.nav-btn:nth-child(1) {
+    margin-right: 20px;
+}
+
+.navbar-toggler {
+    border-style: none;
+    cursor: pointer;
+}
+
+/* Searchbar */
+.search-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.search-nav input {
+    border-style: none;
+    width: 100%;
+    padding: 5px 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.search-nav input:focus {
+    outline: none;
+}
+
+.search-nav .search-icon {
+    padding: 0px 10px;
+    width: 30px;
+    cursor: pointer;
+    color: #000000;
+}
+
+@media only screen and (max-width:1000px) {
+    .nav-right {
+        display: none;
+    }
+
+    .nav-logo-text {
+        display: flex;
+    }
+
+    .nav-item:hover>.under {
+        width: 0;
+        opacity: 0;
+    }
+
+    .search-nav {
+        margin: 5px 0;
+    }
+}
