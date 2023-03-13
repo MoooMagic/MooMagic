@@ -8,8 +8,6 @@ import './Navbar.css'
 import { NavLink } from "react-router-dom"
 // UseNavigate
 import { useNavigate } from 'react-router-dom'
-// HamburgerEnd
-import { GiHamburgerMenu } from 'react-icons/gi'
 // Fot Awesome Icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Search Icon
@@ -27,14 +25,15 @@ const Navbar = () => {
         }
     }
 
+    // useNavigate
     const navigate = useNavigate()
 
-    const [showMenu, setshowMenu] = useState(false);
-
+    // Search Bar Data
     const [searchData, setsearchData] = useState({
         data: ""
     })
 
+    // Handle Search Func
     const handleSearch = (e) => {
         const { name, value } = e.target
 
@@ -44,6 +43,7 @@ const Navbar = () => {
         })
     }
 
+    // Search Bar Data Func
     const searchBarData = () => {
         console.log(searchData.data);
         setsearchData({
@@ -53,10 +53,10 @@ const Navbar = () => {
 
     return (
         <>
-            {/* <!-- Navbar With Dropdown --> */}
+            {/* Navbar */}
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
-                    {/* <!-- Logo --> */}
+                    {/* Logo */}
                     <NavLink className="navbar-brand" to="/"> <img src={Logo1} alt="" className="nav-logo" />
                     </NavLink>
 
@@ -66,23 +66,19 @@ const Navbar = () => {
                         </p>
                     </div>
 
-                    {/* <!-- Collapsiable --> */}
-                    <div
+                    {/* Collapsiable */}
+                    <button
                         className="navbar-toggler"
-
+                        type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#collapsibleNavbar"
-                        aria-expanded={showMenu}
-                        onClick={() => {
-                            showMenu ? setshowMenu(false) : setshowMenu(true)
-                        }}
                     >
-                        <GiHamburgerMenu />
-                    </div>
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
 
                     {/* Nav Item */}
-                    <div className={showMenu ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
-                        <ul className="navbar-nav">
+                    <div className="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul className="navbar-nav me-auto">
                             <NavLink className="nav-item" style={navLinkActiveStyle} to="/">Home
                                 <div className="under"></div></NavLink>
                             <NavLink className="nav-item" style={navLinkActiveStyle} to="/about">About
@@ -91,13 +87,12 @@ const Navbar = () => {
                                 <div className="under"></div></NavLink>
                             <NavLink className="nav-item" style={navLinkActiveStyle} to="/privacy">Privacy
                                 <div className="under"></div></NavLink>
-
-                            {/* Search Bar */}
-                            <div className="search-nav">
-                                <input type="text" name="data" id="" placeholder='Search' value={searchData.data} onChange={handleSearch} />
-                                <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={searchBarData} />
-                            </div>
                         </ul>
+                        {/* Search Bar */}
+                        <div className="search-nav">
+                            <input type="text" name="data" id="" placeholder='Search' value={searchData.data} onChange={handleSearch} />
+                            <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={searchBarData} />
+                        </div>
                     </div>
 
                     {/* Nav Button */}

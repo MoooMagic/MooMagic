@@ -1,9 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-// Bootstrap
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
-
+import React from 'react'
 // CSS
 import './App.css'
 
@@ -15,6 +10,10 @@ import Contact from './Components/Contact/Contact'
 import Privacy from './Components/Privacy/Privacy'
 import SignUp from './Components/SignUp/SignUp'
 import SignIn from './Components/SignIn/SignIn'
+
+// Slicker Carousel
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
 
 // Import React Router Dom
 import {
@@ -40,3 +39,4 @@ function App() {
 }
 
 export default App;
+
