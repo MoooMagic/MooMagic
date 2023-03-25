@@ -1,0 +1,49 @@
+.contact1 {
+    width: 100%;
+    background-image: url('./Assets/banner.png');
+    height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    position: relative;
+}
+
+.contact1 h2 {
+    font-family: "Calibri", sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+    color: #310D98;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-top: 60px;
+}
+
+.contact1 p {
+    font-family: "Calibri", sans-serif;
+    font-weight: 600;
+    color: #310D98;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    font-size: 2.5rem;
+    text-align: justify;
+    padding: 40px 40px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .contact2 {
+    display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 30%;
+  }
+
+  

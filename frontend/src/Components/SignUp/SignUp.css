@@ -1,0 +1,136 @@
+/* Default styles */
+
+.btn-custom {
+  background-color: #310D98;
+  color: white;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.toggle-switch-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 50%;
+}
+
+.toggle-switch-label {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  height: 34px;
+  margin-right: 10px;
+  border-radius: 34px;
+  background-color: white;
+}
+
+.toggle-switch-input {
+  display: none;
+}
+
+.toggle-switch-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 34px;
+  background-color: #fff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggle-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggle-switch-input:checked + .toggle-switch-slider {
+  background-color: #310D98;
+}
+
+.toggle-switch-input:focus + .toggle-switch-slider {
+  box-shadow: 0 0 1px #310D98;
+}
+
+.toggle-switch-input:checked + .toggle-switch-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.toggle-switch-text {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #000;
+  white-space: nowrap;
+  font-family: Sans-Serif;
+}
+
+.toggle-switch-container label {
+  display: flex;
+  align-items: center;
+  width: calc((100% - 20px) / 2);
+  justify-content: center;
+}
+
+/* Media queries for responsive design */
+
+@media only screen and (max-width: 768px) {
+  .toggle-switch-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .toggle-switch-container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .toggle-switch-input:checked + .toggle-switch-slider:before {
+    -webkit-transform: translateX(180px);
+    -ms-transform: translateX(180px);
+    transform: translateX(180px);
+  }
+  
+  .toggle-switch-label {
+    margin-bottom: 10px;
+  }
+  
+  .toggle-switch-text {
+    position: relative;
+    top: initial;
+    left: initial;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    font-size: 12px;
+  }
+  
+  .toggle-switch-container label {
+    width: 80%;
+    justify-content: flex-start;
+  }
+  
+  .text-left {
+    text-align: center;
+  }
+}

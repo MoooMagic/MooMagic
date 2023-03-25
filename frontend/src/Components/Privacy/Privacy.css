@@ -1,0 +1,35 @@
+.privacy-container1 {
+    width: 100%;
+    background-image: url('./Assets/banner.png');
+    height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    position: relative;
+}
+
+.privacy-container1 h2 {
+    font-family: "Calibri", sans-serif;
+    font-weight: 600;
+    font-size: 5rem;
+    color: #310D98;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-top: 40px;
+}
+
+.privacy-container2 p {
+    font-family: "Calibri", sans-serif;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 0.2px;
+    margin-top: 10px;
+    font-size: 1.8rem;
+    text-align: justify;
+    padding: 70px 200px;
+    margin-bottom: 40px;
+}
