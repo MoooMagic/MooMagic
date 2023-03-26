@@ -12,7 +12,7 @@ const verify=(req,res,next)=>{
         });
     }
     else{
-        res.status(500).send("You are not authenticated")
+        res.status(500).send("You are not authinticated")
     }
 };
 
