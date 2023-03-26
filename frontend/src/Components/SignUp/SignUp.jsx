@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import Footer from '../Footer/Footer';
 import SignupImg from './Assets/Signup.jpg';
 import Navbar from '../Navbar/Navbar';
@@ -28,7 +29,7 @@ function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/api/signup', {
+      const response = await axios.fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

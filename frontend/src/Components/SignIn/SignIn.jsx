@@ -24,7 +24,11 @@ function SignIn() {
       const token = response.data.token;
       localStorage.setItem('token', token); // storing token in local storage
     } catch (error) {
-      setError(error.response.data.message);
+      if (error.response.status === 401) {
+        setError('Incorrect password. Please try again.');
+        }else { 
+          setError(error.response.data.message);
+        }
     }
   };
 
