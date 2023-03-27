@@ -54,14 +54,7 @@ const Cart = () => {
         loadCartProduct();
     }, [])
 
-    const incrementPro =(id)=>{
-        // for(let i=0;i<cartProd.length;i++){
-        //     if(cartProd[i].id===id){
-        //         setCartProd()
-        //     }
-        // }
-    }
-    return (
+        return (
         <>
             <div className="cart">
                 {/* Cart Head */}
@@ -87,15 +80,21 @@ const Cart = () => {
                         </div>
                         {/* Product Value Increase */}
                         <div className="cartVal">
-                            {/* Increase */}
-                            <AddCircleIcon style={{ fontSize: '2rem', cursor: 'pointer' }} onClick={incrementPro(elem.id)} />
-                            {/* Value */}
-                            <p style={{ fontSize: '1.2rem', width: '50px', textAlign: 'center', alignSelf: 'center' }}>{elem.store}</p>
-                            {/* Decrease */}
-                            <RemoveCircleIcon style={{ fontSize: '2rem', cursor: 'pointer' }} onClick={() => {
-                                
-                            }} />
-                        </div>
+                        {/* Increase */}
+                        <AddCircleIcon style={{ fontSize: '2rem', cursor: 'pointer' }} onClick={() => {
+                            let newCartProd = [...cartProd];
+                            newCartProd[index].store += 1;
+                            setCartProd(newCartProd);
+                        }} />
+                        {/* Value */}
+                        <p style={{ fontSize: '1.2rem', width: '50px', textAlign: 'center', alignSelf: 'center' }}>{elem.store}</p>
+                        {/* Decrease */}
+                        <RemoveCircleIcon style={{ fontSize: '2rem', cursor: 'pointer' }} onClick={() => {
+                        let newCartProd = [...cartProd];
+                        newCartProd[index].store -= 1;
+                        setCartProd(newCartProd);
+                        }} />
+                    </div>
                         {/* Product Price */}
                         <div className="cartPrice">
                             <h5 style={{ padding: '5px 10px', backgroundColor: 'white', borderRadius: '5px' }}>Price</h5>
