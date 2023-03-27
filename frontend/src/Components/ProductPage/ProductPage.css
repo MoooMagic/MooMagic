@@ -1,0 +1,142 @@
+.productPagePer{
+    width: 100%;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.productPagePer .col-md-4{
+    position: sticky;
+    top: 100px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 5px;
+    padding: 10px;
+    height: fit-content;
+}
+
+.productPagePer .col-md-4 .imgPro{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.productPagePer .col-md-4 img{
+    width: 80%;
+    height: 350px;
+    border-radius: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.productPagePer .col-md-4 .buttonPro{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.productPagePer .col-md-4 .buttonPro button{
+    padding: 5px 10px;
+    border-style: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.productPagePer .col-md-6{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+.productPagePer .col-md-6 h3{
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.productPagePer .col-md-6 h6{
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+    color: rgb(34, 33, 33);
+}
+
+.productPagePer .col-md-6 .perPrice{
+    padding: 5px 20px;
+    border-radius: 2px;
+    color: rgb(12, 0, 17);
+    font-size: 1.2rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: aliceblue;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.productPagePer .col-md-6 p:nth-child(6){
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.productPagePer .col-md-6 p .perQuan{
+    padding: 5px 10px;
+    background-color: rgb(26, 167, 89);
+    font-size: 1rem;
+    border-style: none;
+    font-weight: 600;
+    margin-left: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.productPagePer .col-md-6 p:nth-child(7){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.productPagePer .col-md-6 p:nth-child(7) .delServ{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(57, 17, 109);
+}
+
+.productPagePer .col-md-6 .stock {
+    border-style: none;
+    padding: 5px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+.productPagePer .col-md-6 p:nth-child(9){
+    margin-top: 15px;
+}
+
+.productPagePer .col-md-6 .table{
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding: 10px;
+}

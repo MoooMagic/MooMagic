@@ -74,6 +74,173 @@
     align-items: center;
 }
 
+/* Dropdown */
+.nav-right .sec-center {
+    position: relative;
+    text-align: center;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Label Text Color */
+.nav-right .sec-center label {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* User Profile Pic */
+.nav-right .profile {
+    width: 40px;
+    margin-right: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 50%;
+}
+
+/* Dropdown Checkbox Logic */
+.nav-right [type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-right .dropdown:checked+label,
+.dropdown:not(:checked)+label {
+    position: relative;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 2;
+    transition: all 200ms linear;
+    letter-spacing: 1px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 12px 35px 0 rgba(255, 235, 167, .15);
+}
+
+.nav-right .dropdown:checked+label:before,
+.dropdown:not(:checked)+label:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.nav-right .dropdown:checked+label:before {
+    pointer-events: auto;
+}
+
+/* DropDown Icon Logic */
+.nav-right .dropdown:not(:checked)+label .uil {
+    margin-left: 6px;
+    transition: transform 200ms linear;
+}
+
+.nav-right .dropdown:checked+label .uil {
+    transform: rotate(180deg);
+    margin-left: 6px;
+    transition: transform 200ms linear;
+}
+
+/* Dropdown Elements */
+.nav-right .section-dropdown {
+    position: absolute;
+    padding: 10px 0;
+    background-color: #ffffff;
+    top: 50px;
+    align-self: self-end;
+    width: 100%;
+    right: 0;
+    border-radius: 5px;
+    display: block;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 200ms linear;
+}
+
+.nav-right .dropdown:checked~.section-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.nav-right .section-dropdown:before {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 100%;
+    content: '';
+    display: block;
+    z-index: 1;
+}
+
+.nav-right .section-dropdown:after {
+    position: absolute;
+    top: -7px;
+    right: 4px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ffffff;
+    content: '';
+    display: block;
+    z-index: 2;
+    transition: all 200ms linear;
+}
+
+/* Dropdown Span Element */
+.nav-right .section-dropdown span {
+    text-align: left;
+    padding: 10px 5px;
+    font-size: 0.9rem;
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 501;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-right .section-dropdown span:hover {
+    background-color: rgb(231, 232, 233);
+    border-left: 3px solid rgb(0, 132, 255);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.nav-right .section-dropdown span .prof {
+    margin-right: 5px;
+}
+
 /* Navbar Button */
 .nav-btn {
     background-color: #86a2db;

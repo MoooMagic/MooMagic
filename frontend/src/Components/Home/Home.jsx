@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // CSS
 import './Home.css'
 // Fot Awesome Icon
@@ -10,28 +10,20 @@ import letOut from './Assets/letOut.png'
 import letIn from './Assets/letIn.png'
 // Let After Image
 import letAfter from './Assets/letAfter.png'
-// Footer
-import Footer from '../Footer/Footer'
 // UseNavigate
 import { useNavigate } from 'react-router-dom'
 // Video
 import cowFarmer from './Assets/cowFarmer.mp4'
-// StartIcon
-import StarIcon from '@mui/icons-material/Star';
 // Rupee Icon
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 // Slider
 import Slider from "react-slick";
 
-// Products Images
-import suhanaGhee from './Assets/suhanaGhee.webp'
-import cowMilk from './Assets/cowMilk.jpg'
-import Butter from './Assets/Butter.webp'
-import Paneer from './Assets/paneer.webp'
-import patanjaliGhee from './Assets/patanjaliGhee.jpg'
-import amulMilk from './Assets/amulMilk.webp'
+import SliderBoxProf from '../SliderBoxProf/SliderBoxProf'
 
-const Home = () => {
+import { Link } from 'react-router-dom'
+
+const Home = (props) => {
 
     const navigate = useNavigate();
 
@@ -43,78 +35,28 @@ const Home = () => {
         }
     }
 
-    // Static Product List
-    const Product = [
-        {
-            productLogo: suhanaGhee,
-            productName: "SUHANA Pure Cow Ghee 500 ml Plastic Bottle",
-            productRating: "4.2",
-            productTotalRate: "273",
-            productTotalPrice: 335,
-            productMainPrice: 400,
-        },
-        {
-            productLogo: cowMilk,
-            productName: "Organic Cow Milk | 1 Lt. Glass Bottle",
-            productRating: "4.1",
-            productTotalRate: "200",
-            productTotalPrice: 100,
-            productMainPrice: 150,
-        },
-        {
-            productLogo: Butter,
-            productName: "The Good Cow Co - Pure A2+ Artisan Unsalted White Butter - 100% Natural - Tasty & Delicious (White Butter 400 Gram)",
-            productRating: "4.0",
-            productTotalRate: "170",
-            productTotalPrice: 262,
-            productMainPrice: 269,
-        },
-        {
-            productLogo: Paneer,
-            productName: "Gowardhan Classic Block Paneer (200g)",
-            productRating: "4.2",
-            productTotalRate: "113",
-            productTotalPrice: 88,
-            productMainPrice: 105,
-        },
-        {
-            productLogo: patanjaliGhee,
-            productName: "Patanjali Cow's Ghee, 1L",
-            productRating: "4.4",
-            productTotalRate: "662",
-            productTotalPrice: 660,
-            productMainPrice: 665,
-        },
-        {
-            productLogo: amulMilk,
-            productName: "Amul Gold",
-            productRating: "4.4",
-            productTotalRate: "101",
-            productTotalPrice: 25,
-            productMainPrice: 35,
-        }
-    ]
-
     // Map the Product
-    const prodList = Product.map((elem, index) =>
-        <div className="card" key={index}>
-            <img src={elem.productLogo} className="card-img-top" alt="" />
+    const prodList = props.AllProdList.slice(0,6).map((elem, index) =>
+        <div className="card" style={{ width: '17rem' }} key={index}>
+            {/* Product Img */}
+            <img src={elem.product_img} alt="" className='card-img-top' />
+            {/* Product Body */}
             <div className="card-body">
-                <p className="card-text">{elem.productName}</p>
-                <div className="rate">
-                    <button className="rateBtn">{elem.productRating}<StarIcon /></button>
-                    <button className="rateText">({elem.productTotalRate})</button>
-                </div>
+                {/* Product Name */}
+                <h5 className="card-title">{elem.product_name}</h5>
+                {/* Product Tetx */}
+                <p className="card-text">{elem.product_desc}</p>
+                {/* In Stock */}
+                <button className='stock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'Out of Stock'}</button>
+                {/* Price */}
                 <div className="price">
-                    <p><strong><CurrencyRupeeIcon />{elem.productTotalPrice}</strong></p>
+                    <p><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
                     <p className="fadePrice">
-                        <CurrencyRupeeIcon />{elem.productMainPrice}
-                    </p>
-                    <p className="percent">
-                        {(((elem.productMainPrice - elem.productTotalPrice) * 100) / elem.productMainPrice).toFixed(2)}% off
+                        {elem.quantity}
                     </p>
                 </div>
             </div>
+            <Link to={`/products/${elem.id}`} className="btn btn-outline-info align-self-center" style={{margin:'0 40%'}}>View</Link>
         </div>
     );
 
@@ -151,7 +93,10 @@ const Home = () => {
                     slidesToScroll: 1
                 }
             }
-        ]
+        ],
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     };
 
     return (
@@ -159,6 +104,7 @@ const Home = () => {
             <div className="box">
                 {/* Welcome Page */}
                 <div className="container1">
+                    <SliderBoxProf />
                     {/* Video */}
                     <video src={cowFarmer} autoPlay loop muted />
                     {/* Text */}
@@ -167,12 +113,16 @@ const Home = () => {
                         <p className="card-text">One stop platform where magic begins with farmers.</p>
                         <button className="knowMore" onClick={() => { navigate("/about") }}>Know More<FontAwesomeIcon className='rightIcon' icon={faArrowRight} /></button>
 
-                        <div className="cont">
-                            {/* SignUp */}
-                            <button className="btn btn-outline-success" onClick={() => { navigate("/signup") }}>SIGN UP</button>
-                            {/* SignIn */}
-                            <button className="btn btn-primary" onClick={() => { navigate("/signin") }}>SIGN IN</button>
-                        </div>
+                        {/* If the User is Not Logged In then Show SignUp & Sign In Button */}
+                        {localStorage.getItem('token') === null ?
+                            <>
+                                <div className="cont">
+                                    {/* SignUp */}
+                                    <button className="btn btn-outline-success" onClick={() => { navigate("/signup") }}>SIGN UP</button>
+                                    {/* SignIn */}
+                                    <button className="btn btn-primary" onClick={() => { navigate("/signin") }}>SIGN IN</button>
+                                </div>
+                            </> : ''}
                     </div>
                 </div>
 
@@ -183,6 +133,9 @@ const Home = () => {
                         <Slider {...settings}>
                             {prodList}
                         </Slider>
+                        <div className="text-center">
+                            <button type="button" className="btn btn-warning cursor-pointer text-dark my-3" onClick={() => navigate('/products')}>View More Products..</button>
+                        </div>
                     </div>
                 </div>
 
@@ -227,7 +180,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

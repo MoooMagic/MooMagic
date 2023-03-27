@@ -1,0 +1,70 @@
+.dashboard {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.dashboard .container {
+    width: 80%;
+    background-color: rgb(253, 253, 253);
+    border-radius: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboard .container .profNav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.dashboard .container .row .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    flex-direction: column;
+}
+
+.dashboard .container .row .left img {
+    width: 130px;
+    border-radius: 50%;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dashboard .container .row .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .container .row .right table tbody tr:nth-child(odd) {
+    background-color: rgb(233, 233, 233);
+    border-style: none;
+}
+
+.dashboard .container .row .right table tbody tr:nth-child(even):hover {
+    background-color: rgba(0, 0, 0, 0.507);
+    color: whitesmoke;
+}
+
+.dashboard .container .row .right table tbody tr td:nth-child(1) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.dashboard .container .row .right table tbody tr td:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: darkblue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}

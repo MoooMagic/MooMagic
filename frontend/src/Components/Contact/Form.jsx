@@ -67,25 +67,25 @@ const CharacterCount = styled.div`
 `;
 
 function ContactForm() {
-  const [name,setName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [emailError, setEmailError] = useState('');
 
 
-    const handleNameChange = (event) => {
+  const handleNameChange = (event) => {
     setName(event.target.value);
-    };
-  
+  };
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     const regex = /^\S+@\S+\.\S+$/;
-  if (!regex.test(event.target.value)) {
-    setEmailError('Please enter a valid email address.');
-  } else {
-    setEmailError('');
-  }
+    if (!regex.test(event.target.value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
   };
 
   const handleSubjectChange = (event) => {

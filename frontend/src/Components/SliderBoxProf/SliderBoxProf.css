@@ -1,0 +1,78 @@
+/* Slide Box Profile */
+.slideBoxProfile {
+    left: 0;
+    position: fixed;
+    background-color: #FFFFFF;
+    width: 200px;
+    height: 100vh;
+    z-index: 2;
+    padding: 0 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* CloseProfile */
+.closeProf {
+    margin-top: 10px;
+    background-color: hsl(0, 100%, 7%);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+/* Open Profile */
+.pull {
+    position: fixed;
+    z-index: 1;
+    border-style: none;
+    background-color: beige;
+    border-radius: 50%;
+    padding: 2px;
+    display: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    left: 0;
+}
+
+.slideBoxProfile img {
+    width: 60px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.slideBoxProfile .hr {
+    border-bottom: 2px solid rgba(0, 26, 41, 0.747);
+    width: 100%;
+    margin: 10px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.slideBoxProfile .profile-Item {
+    padding: 5px 10px;
+    width: 100%;
+    margin: 5px 0;
+    background-color: rgba(0, 136, 255, 0.486);
+    border-radius: 20px;
+    font-weight: 501;
+    cursor: pointer;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.slideBoxProfile .prof {
+    margin-right: 5px;
+}
+
+@media only screen and (max-width:1000px) {
+    .cont {
+        display: flex;
+    }
+
+    .pull {
+        display: block;
+    }
+}

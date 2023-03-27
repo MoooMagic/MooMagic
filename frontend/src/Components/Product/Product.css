@@ -1,0 +1,322 @@
+/* Product Page */
+.productsPage {
+    padding-top: 95px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 20px;
+    background: linear-gradient(to right, #8696AF, #CAD1DB);
+    letter-spacing: 0.8px;
+}
+
+/* Filter Side */
+.productsPage .filterSide {
+    position: sticky;
+    top: 95px;
+    width: 20%;
+    height: 84vh;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: flex-start;
+    padding: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+}
+
+/* Filter Heading */
+.productsPage .filterSide .filterHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Filter Clear Button */
+.productsPage .filterSide .filterHeading .filterClear {
+    border-style: none;
+    padding: 2px 5px;
+    background-color: #CAD1DB;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+/* Filter CLear Button Effect */
+.productsPage .filterSide .filterHeading .filterClear:hover {
+    background-color: rgb(247, 248, 250);
+}
+
+/* Filter Categories */
+.productsPage .filterSide .filterCategories {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filterCategories h6 {
+    text-transform: uppercase;
+    width: 100%;
+    padding: 5px 0;
+    background-color: rgb(98, 187, 190);
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.filterCategories p {
+    align-self: flex-start;
+    padding-left: 10px;
+}
+
+.filterCategories p img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+/* Filter Check Box */
+.filterCheck {
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+/* Filter CheckBox */
+.filterCheck .check {
+    opacity: 1;
+    position: static;
+    margin-right: 10px;
+    pointer-events: visible;
+    cursor: pointer;
+    accent-color: rgb(241, 9, 172);
+}
+
+/* Label */
+.filterCheck label {
+    cursor: pointer;
+}
+
+/* Filter Date */
+.filterDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Filter Date Dot */
+.filterDate h6 .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 0, 179);
+    border-radius: 50%;
+    margin-right: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+/* Filter Heading */
+.filterDate h6 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to left, #014CA7, #5ca2f8be);
+    text-align: start;
+    align-self: flex-start;
+    color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 1rem;
+}
+
+/* Filter Date */
+.filterDate input[type="date"] {
+    width: 90%;
+    padding: 10px 15px;
+    border-style: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 20px;
+    background: linear-gradient(to left, #B4EAFF, #7482EF);
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.filterDate input[type="date"]:focus {
+    outline: none;
+}
+
+.filterDate input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    background-image: url('./calendar.png');
+}
+
+/* Filter Price */
+.filterPrice {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #292941;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.filterPrice h6 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.filterPrice h6 button {
+    border-style: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    color: white;
+}
+
+/* Sound Range Slider */
+.filterPrice .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #111;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+    border-radius: 15px;
+    margin: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgb(23, 23, 24);
+    cursor: pointer;
+}
+
+.filterPrice .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: -400px 0 0 395px #27bbff;
+}
+
+/* Product Side */
+.productsPage .productSide {
+    width: 76%;
+    border-radius: 4px;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background: linear-gradient(to right, rgb(246, 243, 255), #FFFFFF);
+}
+
+/* Product Card */
+.productsPage .productSide .card {
+    height: 450px;
+    border: none;
+    font-family: "Calibri", sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.productsPage .productSide .card:hover {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.productsPage .productSide .card img {
+    width: 13rem;
+    height: 200px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.productsPage .productSide .card .card-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.productsPage .productSide .card .card-title {
+    color: #201749;
+    font-weight: 550;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.productsPage .productSide .card .card-text {
+    color: #323236;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.productsPage .productSide .card .stock {
+    border-style: none;
+    width: 90%;
+    padding: 1px 0;
+    align-self: center;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.productsPage .productSide .card .price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.productsPage .productSide .card .price .fadePrice {
+    font-size: 1rem;
+    color: #000000;
+    background-color: rgba(43, 173, 43, 0.774);
+    padding: 4px;
+    border-radius: 50%;
+    font-weight: 600;
+}
