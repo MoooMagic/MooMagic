@@ -138,9 +138,12 @@ const Navbar = (props) => {
                                     {/* Dropdown bar */}
                                     <div className="section-dropdown">
                                         {/* Items */}
-                                        <span className="dropdown-item" onClick={() => navigate('/profile')}><AccountCircleIcon className='prof' />Your Profile</span>
-                                        <span className="dropdown-item"><Inventory2Icon className='prof' />Your Products</span>
+                                        <span className="dropdown-item" onClick={()=>{navigate('/profile')}}><AccountCircleIcon className='prof' />Your Profile</span>
+
+                                        <span className="dropdown-item" onClick={()=>{navigate('/user-product')}}><Inventory2Icon className='prof' />Your Products</span>
+
                                         <span className="dropdown-item"><ViewListIcon className='prof' />Your Orders</span>
+
                                         <span className="dropdown-item" onClick={() => navigate('/cart')}><ShoppingCartIcon className='prof' />Cart</span>
 
                                         {/* Logout When User is Logged In */}

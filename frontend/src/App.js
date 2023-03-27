@@ -26,6 +26,7 @@ import {
   BrowserRouter, Routes, Route
 } from "react-router-dom"
 import ProductPage from './Components/ProductPage/ProductPage'
+import UserProduct from './Components/UserProduct/UserProduct'
 
 function App() {
   // Search Data UseState
@@ -163,6 +164,7 @@ function App() {
           <Route exact path="/edit-profile" element={<Profile />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path='/products/:id' element={<ProductPage AllProdList={AllProdList} />} />
+          <Route exact path='/user-product' element={<UserProduct />} />
         </Routes>
         <Footer />
       </BrowserRouter>
