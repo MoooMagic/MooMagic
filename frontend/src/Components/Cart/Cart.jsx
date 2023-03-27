@@ -103,7 +103,7 @@ const Cart = () => {
                                 <CurrencyRupeeIcon /> {elem.price}</h5>
                             <DeleteIcon style={{ color: 'red', cursor: 'pointer' }} />
                             {/* Total Price */}
-                            <h6 style={{ padding: '5px 10px', backgroundColor: 'white', borderRadius: '5px', marginTop: '30px' }}>Total Price = <CurrencyRupeeIcon /> {250 * elem.store}</h6>
+                            <h6 style={{ padding: '5px 10px', backgroundColor: 'white', borderRadius: '5px', marginTop: '30px' }}>Total Price = <CurrencyRupeeIcon /> {elem.price * elem.store}</h6>
                         </div>
                     </div>
                 )
