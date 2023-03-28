@@ -1,8 +1,8 @@
 .userProduct{
     padding-top: 100px;
     width: 100%;
-}
-
-.userProduct .container{
-    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
 }

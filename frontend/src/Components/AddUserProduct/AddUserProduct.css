@@ -1,0 +1,49 @@
+.AddUserProduct{
+    padding-top: 100px;
+    width: 100%;
+}
+
+.AddUserProduct .container{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 20px;
+    color: rgb(39, 1, 39);
+}
+
+.AddUserProduct .container label{
+    width: 68%;
+    margin: 5px;
+}
+
+.AddUserProduct .container input{
+    width: 70%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.AddUserProduct .container input:focus{
+    outline: none;
+}
+
+.AddUserProduct .container select{
+    width: 70%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+}
+
+.AddUserProduct .container select:focus{
+    outline: none;
+}
