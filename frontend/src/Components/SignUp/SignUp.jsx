@@ -8,6 +8,7 @@ import retailer from './Assets/retailer.jpg'
 const SignUp = () => {
   const navigate=useNavigate();
 
+  // This is dummy code
   return (
     <>
       <div className="signUpMain">
