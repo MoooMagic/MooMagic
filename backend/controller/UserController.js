@@ -86,7 +86,8 @@ MooMagic Team`
                 res.status(400).send("Wrong credentials")
             }
             const acessToken = jwt.sign({ id: logger._id, isSeller: logger.isSeller, isRetailer: logger.isRetailer }, process.env.JWT_SECRET, { expiresIn: "5d" });
-            res.cookie('token', acessToken, { httpOnly: true, expire: new Date() + 9999 }).status(200).json({ acessToken })
+            //res.cookie('token', acessToken, { httpOnly: true, expire: new Date(Date.now()+5*24*60*60*1000)}).status(200).json({ acessToken })
+            res.status(200).json({ acessToken })
         } catch (error) {
             res.status(500).send(`Internal Sever error${error}`)
             console.log(error)

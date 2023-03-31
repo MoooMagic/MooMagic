@@ -16,18 +16,15 @@ function SignIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    try {
-      const response = await axios.post('/api/login', { email, password });
-      const token = response.data.token;
-      localStorage.setItem('token', token); // storing token in local storage
-    } catch (error) {
-      if (error.response.status === 401) {
-        setError('Incorrect password. Please try again.');
-      } else {
-        setError(error.response.data.message);
-      }
-    }
+    axios.post('http://localhost:5000/api/auth/login', { email, password })
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem('token', res.data.acessToken)
+      window.location.href = "/";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   return (

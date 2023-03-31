@@ -8,7 +8,7 @@ const SignUpRetailer = () => {
     name: "",
     email: "",
     password: "",
-    mobile: "",
+    phonenumber: "",
     isSeller: false,
     isRetailer: true,
   });
@@ -22,21 +22,14 @@ const SignUpRetailer = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await axios.fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+    axios.post('http://localhost:5000/api/auth/register', formData)
+    .then((res) => {
+      console.log(res);
+      window.location.href = "/SignIn";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   const handleChange = (event) => {
@@ -48,7 +41,7 @@ const SignUpRetailer = () => {
       if (!emailRegex.test(value)) {
         errorMessage = "Please enter a valid email address";
       }
-    } else if (name === "mobile") {
+    } else if (name === "phonenumber") {
       // check if mobile number is valid
       if (!validateMobileNumber(value)) {
         errorMessage = "Please enter a valid mobile number";
@@ -161,15 +154,15 @@ const SignUpRetailer = () => {
                         <div className="form-outline mb-4">
                           <input
                             type="tel"
-                            id="mobile"
-                            name="mobile"
+                            id="phonenumber"
+                            name="phonenumber"
                             placeholder="Enter Mobile Number"
                             className="form-control form-control-lg"
                             value={formData.mobile}
                             onChange={handleChange}
                             required
                           />
-                          <label className="form-label" htmlFor="mobile">
+                          <label className="form-label" htmlFor="phonenumber">
                             Mobile Number
                           </label>
                         </div>

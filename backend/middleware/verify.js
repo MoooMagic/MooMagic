@@ -1,7 +1,7 @@
 const jwt=require('jsonwebtoken');
 
 const verify=(req,res,next)=>{
-    const token=req.cookies.token;
+    const token=req.headers.token;
     if(token){
         jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{
             if(err){

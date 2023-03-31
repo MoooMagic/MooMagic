@@ -40,113 +40,16 @@ function App() {
 
   // Use Effect
   useEffect(() => {
-    // const x=axios.get('');
-    const x = [
-      {
-        id: 0,
-        product_img:
-          "https://patankarfarmproducts.com/wp-content/uploads/2020/08/500-ml-ghee.jpg",
-        product_name: "Ghee",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "50L",
-        InStock: true,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 1,
-        product_img:
-          "https://rukminim1.flixcart.com/image/416/416/l16rde80/milk/s/u/v/1-taaza-homogenised-toned-milk-1-l-tetra-pak-box-toned-amul-original-imagcsyy9spcwwgp.jpeg?q=70",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "50L",
-        InStock: true,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 2,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "50L",
-        InStock: true,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 3,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "50L",
-        InStock: true,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 4,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "500L",
-        InStock: false,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 5,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "500L",
-        InStock: false,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 6,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "500L",
-        InStock: false,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 7,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "500L",
-        InStock: false,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-      {
-        id: 8,
-        product_img:
-          "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?resize=960,872",
-        product_name: "Milk",
-        product_desc: "Masti Masti",
-        price: 550,
-        quantity: "500L",
-        InStock: false,
-        updatedAt: "2023-03-18T20:32:07.039+00:00",
-      },
-    ];
-    setTimeout(() => {
-      setAllProdList(x);
-    });
-  });
-
+    async function fetchallproducts(){
+      try {
+        const res=await axios.get("http://localhost:5000/api/product/allproductt");
+        setAllProdList(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchallproducts();
+  },[]);
   return (
     <>
       <BrowserRouter>
