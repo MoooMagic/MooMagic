@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // Logo
 import Logo1 from './logo1.png'
 // Profile Logo
@@ -25,6 +25,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // LogOut
 import LogoutIcon from '@mui/icons-material/Logout';
+import axios from 'axios';
 
 
 const Navbar = (props) => {
@@ -46,7 +47,7 @@ const Navbar = (props) => {
     const [searchData, setsearchData] = useState({
         data: ""
     })
-
+    const [username, setusername] = useState([]);
     // Handle Search Func
     const handleSearch = (e) => {
         const { name, value } = e.target
@@ -67,6 +68,21 @@ const Navbar = (props) => {
             navigate("/products")
         }
     }
+
+    useEffect(() => {
+        const token=localStorage.getItem('token');
+        const user=localStorage.getItem('userid');
+        const userid=user.replace(/['"]+/g, '');
+        axios.get(`http://localhost:5000/api/auth/user/${userid}`,{
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        }).then((res)=>{
+            const fullname=res.data.name;
+            const name=fullname.split(" ")[0];
+            setusername(name);})
+            .catch((err)=>{console.log(err)})
+    }, [])
 
     return (
         <>
@@ -131,7 +147,7 @@ const Navbar = (props) => {
                                             alt="User Profile Pic"
                                             className="profile"
                                         />
-                                        <h6>Hey, FirstName</h6>
+                                        <h6>Hey, {username}</h6>
                                         {/* Icon For Dropdown */}
                                         <ArrowDropDownIcon className="uil" />
                                     </label>

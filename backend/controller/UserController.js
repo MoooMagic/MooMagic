@@ -87,7 +87,7 @@ MooMagic Team`
             }
             const acessToken = jwt.sign({ id: logger._id, isSeller: logger.isSeller, isRetailer: logger.isRetailer }, process.env.JWT_SECRET, { expiresIn: "5d" });
             //res.cookie('token', acessToken, { httpOnly: true, expire: new Date(Date.now()+5*24*60*60*1000)}).status(200).json({ acessToken })
-            res.status(200).json({ acessToken })
+            res.status(200).json({ acessToken,userid:logger._id})
         } catch (error) {
             res.status(500).send(`Internal Sever error${error}`)
             console.log(error)
@@ -134,6 +134,20 @@ router.delete('/delete/:id', verify, async (req, res) => {
         }
     } else {
         res.status(500).send("You can only delete your own account")
+    }
+})
+
+router.get('/user/:id', verify,async (req, res) => {
+    try {
+        if(req.user.id===req.params.id){
+            const user = await User.findById(req.params.id).select("-password");
+            res.status(200).send(user)
+        }
+        else{
+            res.status(500).send("You can only view your own account")
+        }
+    } catch (error) {
+        res.status(500).send("Server Error")
     }
 })
 

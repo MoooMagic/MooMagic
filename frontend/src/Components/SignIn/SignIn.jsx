@@ -20,6 +20,7 @@ function SignIn() {
     .then((res) => {
       console.log(res);
       localStorage.setItem('token', res.data.acessToken);
+      localStorage.setItem('userid', JSON.stringify(res.data.userid));
       window.location.href = "/";
     })
     .catch((err) => {
