@@ -19,7 +19,7 @@ function SignIn() {
     axios.post('http://localhost:5000/api/auth/login', { email, password })
     .then((res) => {
       console.log(res);
-      localStorage.setItem('token', res.data.acessToken)
+      localStorage.setItem('token', res.data.acessToken);
       window.location.href = "/";
     })
     .catch((err) => {

@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import "./AddUserProduct.css";
+import axios from "axios";
 
 // Sweetalert
 import Swal from "sweetalert2";
@@ -22,30 +23,30 @@ const AddUserProduct = () => {
       [name]: value,
     });
   };
-
+  const token=localStorage.getItem('token');
+  console.log(token);
   const uploadProduct = () => {
-    if (
-      addProduct.product_img !== "" &&
-      addProduct.product_name !== "" &&
-      addProduct.product_desc !== "" &&
-      addProduct.price !== 0 &&
-      addProduct.quantity !== ""
-    ) {
-      console.log(addProduct);
-      setAddProduct({
-        product_img: "",
-        product_name: "",
-        product_desc: "",
-        price: 0,
-        quantity: "",
-        InStock: true,
-      });
-    } else {
+    axios.post('http://localhost:5000/api/product/addproduct', addProduct,{
+      headers: {
+        'Authorization': `Bearer ${token}`,}
+    }).then((res) => {
+      console.log(res);
       Swal.fire({
-        icon: "warning",
-        text: "All fields are required !",
-      });
-    }
+        position: 'top-end',
+        icon: 'success',
+        title: 'Product Added Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }).catch((err) => {
+      console.log(err);
+    });
+    setAddProduct({product_img: "",
+    product_name: "",
+    product_desc: "",
+    price: 0,
+    quantity: "",
+    InStock: true,})
   };
 
   return (

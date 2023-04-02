@@ -26,6 +26,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 // LogOut
 import LogoutIcon from '@mui/icons-material/Logout';
 
+
 const Navbar = (props) => {
     // Active Style
     const navLinkActiveStyle = ({ isActive }) => {

@@ -4,7 +4,7 @@ const Product = require('../model/Product');
 const nodemailer = require('nodemailer');
 const verify = require('../middleware/verify');
 
-router.post('/addproduct', verify, async (req, res) => {
+router.post('/addproduct',verify,async (req, res) => {
     try {
         const product = await Product.create({
             product_name: req.body.product_name,
