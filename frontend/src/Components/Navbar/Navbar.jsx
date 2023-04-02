@@ -72,8 +72,8 @@ const Navbar = (props) => {
     useEffect(() => {
         const token=localStorage.getItem('token');
         const user=localStorage.getItem('userid');
-        const userid=user.replace(/['"]+/g, '');
-        axios.get(`http://localhost:5000/api/auth/user/${userid}`,{
+        //const userid=user.replace(/['"]+/g, '');
+        axios.get(`http://localhost:5000/api/auth/user/${user}`,{
             headers:{
                 'Authorization':`Bearer ${token}`
             }

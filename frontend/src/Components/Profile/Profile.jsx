@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Profile.css'
 
 // NavLink
@@ -22,13 +22,14 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 
 // Profile Logo
 import profileLogo from './profileLogo.jpg'
+import axios from 'axios';
 
 const Profile = () => {
     const [profVal, setProfVal] = useState({
         prof: true,
         editProf: false
     });
-
+const [user, setUser] = useState('');
     // Active Style
     const navLinkActiveStyle = ({ isActive }) => {
         return {
@@ -39,6 +40,19 @@ const Profile = () => {
             textShadow: isActive ? 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' : 'none'
         }
     }
+    useEffect(() => {
+        const token=localStorage.getItem("token");
+        const user=localStorage.getItem("userid");
+        axios.get(`http://localhost:5000/api/auth/user/${user}`,{
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        }).then((res)=>{
+            setUser(res.data)
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }, []);
 
     return (
         <>
@@ -62,9 +76,9 @@ const Profile = () => {
                         <div className="col-md-5 left">
                             {/* Name Profile */}
                             <img src={profileLogo} alt="" />
-                            <h5>Full Name</h5>
+                            <h5>{user.name}</h5>
 
-                            <h6>abcd@gmail.com</h6>
+                            <h6>{user.email}</h6>
                         </div>
                         <div className="col-md-7 right">
                             {
@@ -74,22 +88,22 @@ const Profile = () => {
                                             {/* Name */}
                                             <tr>
                                                 <td><PersonIcon style={{ marginRight: '5px' }} />Name</td>
-                                                <td>Full Name</td>
+                                                <td>{user.name}</td>
                                             </tr>
                                             {/* Role */}
                                             <tr>
                                                 <td><StorefrontIcon style={{ marginRight: '5px' }} />Role</td>
-                                                <td>Seller</td>
+                                                <td>{user.isSeller?'Seller':'Retailer'}</td>
                                             </tr>
                                             {/* Email */}
                                             <tr>
                                                 <td><EmailIcon style={{ marginRight: '5px' }} />Email</td>
-                                                <td>abcd@gmail.com</td>
+                                                <td>{user.email}</td>
                                             </tr>
                                             {/* Contact */}
                                             <tr>
                                                 <td><ContactsIcon style={{ marginRight: '5px' }} />Contact</td>
-                                                <td>+91 1234567890</td>
+                                                <td>+91 {user.phonenumber}</td>
                                             </tr>
                                             {/* Status */}
                                             <tr>

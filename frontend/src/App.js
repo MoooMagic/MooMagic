@@ -42,13 +42,8 @@ function App() {
   useEffect(() => {
     async function fetchallproducts(){
       try {
-        const res=await axios.get("http://localhost:5000/api/product/allproducts",null,
-        {
-          headers: {
-            'Authorization': `${localStorage.getItem("token")}`
-          },
-        });
-        setAllProdList(res.data);
+        const res=await axios.get("http://localhost:5000/api/product/allproducts")
+        setAllProdList(res.data)
       } catch (error) {
         console.log(error);
       }
