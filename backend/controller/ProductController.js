@@ -81,5 +81,20 @@ router.get('/productid/:id', async (req, res) => {
         res.status(500).send("Internal server error")
     }
 })
+router.get('/productbyuser/:id', verify,async (req, res) => {
+    if(req.user.id===req.params.id){
+        try {
+            const product = await Product.find({ createdBy: req.params.id });
+            if (product) {
+                res.status(200).json(product)
+            }
+            else {
+                res.status(400).send("Not found")
+            }
+        } catch (error) {
+            res.status(500).send("Internal server error")
+        }
+    }
+})
 
 module.exports = router
