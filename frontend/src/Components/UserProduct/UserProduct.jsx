@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 // Rupee
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import axios from "axios";
+
+
+
 
 const UserProduct = () => {
   const navigate = useNavigate();
@@ -12,41 +16,18 @@ const UserProduct = () => {
   const [showUserProd, setshowUserProd] = useState([]);
 
   useEffect(() => {
-    const loadUserProduct = async () => {
-      // axios.get('/api/').then(res=>{
-
-      // })
-      setshowUserProd([
-        {
-          id: 0,
-          product_img:
-            "https://patankarfarmproducts.com/wp-content/uploads/2020/08/500-ml-ghee.jpg",
-          product_name: "Ghee",
-          product_desc: "Masti Masti",
-          price: 550,
-          quantity: "50L",
-          InStock: true,
-          updatedAt: "2023-03-18T20:32:07.039+00:00",
-          store: 1,
-        },
-        {
-          id: 1,
-          product_img:
-            "https://rukminim1.flixcart.com/image/416/416/l16rde80/milk/s/u/v/1-taaza-homogenised-toned-milk-1-l-tetra-pak-box-toned-amul-original-imagcsyy9spcwwgp.jpeg?q=70",
-          product_name: "Milky Mist Toned Milk (UHT)",
-          product_desc:
-            "Masti Masti Masti Masti Masti MastiMasti MastiMasti MastiMasti MastiMasti",
-          price: 550,
-          quantity: "50L",
-          InStock: true,
-          updatedAt: "2023-03-18T20:32:07.039+00:00",
-          store: 1,
-        },
-      ]);
-    };
-    loadUserProduct();
-  }, []);
-
+    const token=localStorage.getItem("token");
+    const userid=localStorage.getItem("userid");
+    axios.get(`http://localhost:5000/api/product/productbyuser/${userid}`,{
+      headers:{
+        'Authorization':`Bearer ${token}`
+      }
+    }).then((res)=>{
+      setshowUserProd(res.data);
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }, [])
   return (
     <>
       <div className="userProduct">
