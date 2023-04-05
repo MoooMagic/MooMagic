@@ -29,7 +29,7 @@ const Profile = () => {
         prof: true,
         editProf: false
     });
-const [user, setUser] = useState('');
+    const [user, setUser] = useState('');
     // Active Style
     const navLinkActiveStyle = ({ isActive }) => {
         return {
@@ -41,20 +41,23 @@ const [user, setUser] = useState('');
         }
     }
     useEffect(() => {
-        const token=localStorage.getItem("token");
-        const user=localStorage.getItem("userid");
-        if(!token&& !user){
-            return window.location.href="/signin";
+        const token = localStorage.getItem("token");
+        const user = localStorage.getItem("userid");
+        if (!token && !user) {
+            return window.location.href = "/signin";
         }
-        axios.get(`http://localhost:5000/api/auth/user/${user}`,{
-            headers:{
-                'Authorization':`Bearer ${token}`
-            }
-        }).then((res)=>{
-            setUser(res.data)
-        }).catch((err)=>{
-            console.log(err);
-        })
+        else {
+            axios.get(`http://localhost:5000/api/auth/user/${user}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then((res) => {
+                setUser(res.data)
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
     }, []);
 
     return (
@@ -96,7 +99,7 @@ const [user, setUser] = useState('');
                                             {/* Role */}
                                             <tr>
                                                 <td><StorefrontIcon style={{ marginRight: '5px' }} />Role</td>
-                                                <td>{user.isSeller?'Seller':'Retailer'}</td>
+                                                <td>{user.isSeller ? 'Seller' : 'Retailer'}</td>
                                             </tr>
                                             {/* Email */}
                                             <tr>
@@ -111,7 +114,7 @@ const [user, setUser] = useState('');
                                             {/* Status */}
                                             <tr>
                                                 <td><DonutLargeIcon style={{ marginRight: '5px' }} />Status</td>
-                                                <td>Active</td>
+                                                <td>{localStorage.getItem('token') ? 'Active' : 'Inactive'}</td>
                                             </tr>
                                         </tbody>
                                     </table>

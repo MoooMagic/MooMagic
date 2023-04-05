@@ -23,13 +23,13 @@ const SignUpRetailer = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     axios.post('http://localhost:5000/api/auth/register', formData)
-    .then((res) => {
-      console.log(res);
-      window.location.href = "/SignIn";
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        console.log(res);
+        window.location.href = "/SignIn";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleChange = (event) => {

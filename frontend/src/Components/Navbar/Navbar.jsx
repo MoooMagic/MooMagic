@@ -70,18 +70,22 @@ const Navbar = (props) => {
     }
 
     useEffect(() => {
-        const token=localStorage.getItem('token');
-        const user=localStorage.getItem('userid');
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('userid');
         //const userid=user.replace(/['"]+/g, '');
-        axios.get(`http://localhost:5000/api/auth/user/${user}`,{
-            headers:{
-                'Authorization':`Bearer ${token}`
-            }
-        }).then((res)=>{
-            const fullname=res.data.name;
-            const name=fullname.split(" ")[0];
-            setusername(name);})
-            .catch((err)=>{console.log(err)})
+        if (token && user) {
+            axios.get(`http://localhost:5000/api/auth/user/${user}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then((res) => {
+                const fullname = res.data.name;
+                const name = fullname.split(" ")[0];
+                setusername(name);
+            })
+                .catch((err) => { console.log(err) })
+        }
+
     }, [])
 
     return (
@@ -155,9 +159,9 @@ const Navbar = (props) => {
                                     {/* Dropdown bar */}
                                     <div className="section-dropdown">
                                         {/* Items */}
-                                        <span className="dropdown-item" onClick={()=>{navigate('/profile')}}><AccountCircleIcon className='prof' />Your Profile</span>
+                                        <span className="dropdown-item" onClick={() => { navigate('/profile') }}><AccountCircleIcon className='prof' />Your Profile</span>
 
-                                        <span className="dropdown-item" onClick={()=>{navigate('/user-product')}}><Inventory2Icon className='prof' />Your Products</span>
+                                        <span className="dropdown-item" onClick={() => { navigate('/user-product') }}><Inventory2Icon className='prof' />Your Products</span>
 
                                         <span className="dropdown-item"><ViewListIcon className='prof' />Your Orders</span>
 
