@@ -43,6 +43,9 @@ const [user, setUser] = useState('');
     useEffect(() => {
         const token=localStorage.getItem("token");
         const user=localStorage.getItem("userid");
+        if(!token&& !user){
+            return window.location.href="/signin";
+        }
         axios.get(`http://localhost:5000/api/auth/user/${user}`,{
             headers:{
                 'Authorization':`Bearer ${token}`

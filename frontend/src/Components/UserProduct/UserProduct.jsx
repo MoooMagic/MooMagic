@@ -18,6 +18,9 @@ const UserProduct = () => {
   useEffect(() => {
     const token=localStorage.getItem("token");
     const userid=localStorage.getItem("userid");
+    if(!token&&!userid){
+      return window.location.href="/signin";
+    }
     axios.get(`http://localhost:5000/api/product/productbyuser/${userid}`,{
       headers:{
         'Authorization':`Bearer ${token}`

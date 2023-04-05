@@ -8,6 +8,7 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 // Profile Icon
 import PersonIcon from '@mui/icons-material/Person';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const EditProfile = () => {
@@ -21,16 +22,20 @@ const EditProfile = () => {
         const value=e.target.value;
         setuserdata({...userdata,[name]:value})
     }
+    const navigate=useNavigate();
     const handelsubmit=async(e)=>{
         const token=localStorage.getItem("token");
         const userid=localStorage.getItem("userid");
+        if(!token&& !userid){
+            return window.location.href="/signin";
+        }
         e.preventDefault();
         axios.put(`http://localhost:5000/api/auth/${userid}`,userdata,{
             headers:{
                 'Authorization':`Bearer ${token}`
             }
         }).then((res)=>{
-            window.location.reload();
+            window.location.href="/profile";
             console.log(res);
         }
         ).catch((err)=>{
