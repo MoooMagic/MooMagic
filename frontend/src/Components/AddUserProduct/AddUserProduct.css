@@ -1,9 +1,12 @@
 .AddUserProduct{
     padding-top: 100px;
     width: 100%;
+    background: linear-gradient(65deg,#F5FCFF,#B7E9F7,#DBF3FA);
+    padding-bottom: 30px;
 }
 
 .AddUserProduct .container{
+    background-color: rgb(255, 255, 255);
     width: 50%;
     display: flex;
     justify-content: space-evenly;
@@ -19,6 +22,9 @@
 .AddUserProduct .container label{
     width: 68%;
     margin: 5px;
+    color: rgb(2, 48, 66);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .AddUserProduct .container input{

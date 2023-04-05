@@ -1,8 +1,114 @@
 .userProduct{
     padding-top: 100px;
     width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(65deg,white,#F9F9F8,#F2F3F2,#ECECEB);
+}
+
+.userProduct .userProductSide{
+    width: 90%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.userProduct .btn{
+    margin-bottom: 30px;
+}
+
+/* Product Card */
+.userProduct .userProductSide .card {
+    height: 450px;
+    border: none;
+    font-family: "Calibri", sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.userProduct .userProductSide .card:hover {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.userProduct .userProductSide .card img {
+    width: 13rem;
+    height: 200px;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+.userProduct .userProductSide .card .card-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userProduct .userProductSide .card .card-title {
+    color: #201749;
+    font-weight: 550;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.userProduct .userProductSide .card .card-text {
+    color: #323236;
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.userProduct .userProductSide .card .stock {
+    border-style: none;
+    width: 90%;
+    padding: 1px 0;
+    align-self: center;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.userProduct .userProductSide .card .price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000000;
+    margin-top: 10px;
+}
+
+.userProduct .userProductSide .card .price .fadePrice {
+    font-size: 1rem;
+    color: #000000;
+    background-color: rgba(43, 173, 43, 0.774);
+    padding: 4px;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.userProduct .userProductSide .card .lowerBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
