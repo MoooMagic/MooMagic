@@ -10,9 +10,6 @@ import SliderBoxProf from '../SliderBoxProf/SliderBoxProf'
 // Rupee
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
-// Filter Icon
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-
 // UseNavigate
 import { useNavigate } from 'react-router-dom'
 
@@ -33,7 +30,14 @@ const Product = (props) => {
     })
 
     // ProductList UseState
-    const [productList, setProductList] = useState(props.AllProdList);
+    const [productList, setProductList] = useState([]);
+
+    // UseEffect for Load All Product
+    useEffect(() => {
+        if (props.AllProdList.length > 0) {
+            setProductList(props.AllProdList);
+        }
+    }, [props.AllProdList])
 
     // Filter Change Handle
     const handleFilterChange = (e) => {
@@ -45,35 +49,34 @@ const Product = (props) => {
         })
     }
 
-    // UseEffect
+    // UseEffect for Filter
     useEffect(() => {
-        setTimeout(() => {
-            if (props.data !== '') {
-                setProductList(props.AllProdList.filter((elem) => (
-                    elem.product_name.toLowerCase() === props.data.toLowerCase()
-                )))
-                props.setData('');
-            }
-        })
-    }, [props])
+        let filteredProducts = props.AllProdList.filter((elem) => {
+            let isMilk = filterVal.milkVal === 'true' && elem.product_name.toLowerCase() === "milk";
+            let isGhee = filterVal.gheeVal === 'true' && elem.product_name.toLowerCase() === "ghee";
+            let isPaneer = filterVal.paneerVal === 'true' && elem.product_name.toLowerCase() === "paneer";
+            let isButter = filterVal.butterVal === 'true' && elem.product_name.toLowerCase() === "butter";
+            let isDate = elem.updatedAt.substring(0, 10) === filterVal.dateVal;
+            let isPrice = elem.price <= parseInt(filterVal.priceVal)
+            return isMilk || isGhee || isPaneer || isButter || isDate || isPrice;
+        });
 
-    // Filter Sort Func
-    const filterSort = () => {
-        // If any Value is True
-        if (filterVal.milkVal || filterVal.paneerVal || filterVal.gheeVal || filterVal.butterVal || filterVal.dateVal !== '' || filterVal.priceVal !== 0) {
-            if (filterVal.milkVal) {
-                if (filterVal.dateVal) {
-                    if (filterVal.priceVal) {
-                        setProductList(props.AllProdList.filter((elem) => (
-                            elem.product_name.toLowerCase() === 'milk' && elem.price <= filterVal.priceVal
-                        )))
-                    }
-                }
-            }
+        if (filteredProducts.length > 0 || filterVal.milkVal === 'true' || filterVal.gheeVal === 'true' || filterVal.paneerVal === 'true' || filterVal.butterVal === 'true' || filterVal.dateVal !== '' || parseInt(filterVal.priceVal) !== 0) {
+            setProductList(filteredProducts);
         } else {
             setProductList(props.AllProdList);
         }
-    }
+    }, [filterVal, props.AllProdList])
+
+    // UseEffect for Seacrh Data
+    useEffect(() => {
+        if (props.data !== '') {
+            setProductList(props.AllProdList.filter((elem) => (
+                elem.product_name.toLowerCase() === props.data.toLowerCase()
+            )))
+            props.setData('');
+        }
+    }, [props, props.data])
 
     // UseRef
     const ref = useRef([]);
@@ -123,23 +126,23 @@ const Product = (props) => {
 
                         {/* Milk */}
                         <div className="filterCheck">
-                            <input type="checkbox" name="milkVal" id="milkVal" className='check' onChange={handleFilterChange} value={filterVal.milkVal ? false : true} ref={(element) => { ref.current[0] = element }} />
+                            <input type="checkbox" name="milkVal" id="milkVal" className='check' onChange={handleFilterChange} value={filterVal.milkVal === 'true' ? false : true} ref={(element) => { ref.current[0] = element }} />
                             <label htmlFor="milkVal">Milk</label>
                         </div>
 
                         {/* Panner */}
                         <div className="filterCheck" >
-                            <input type="checkbox" name="paneerVal" id="paneerVal" className='check' onChange={handleFilterChange} value={filterVal.paneerVal ? false : true} ref={(element) => { ref.current[1] = element }} />
+                            <input type="checkbox" name="paneerVal" id="paneerVal" className='check' onChange={handleFilterChange} value={filterVal.paneerVal === 'true' ? false : true} ref={(element) => { ref.current[1] = element }} />
                             <label htmlFor="paneerVal">Paneer</label>
                         </div>
                         {/* Ghee */}
                         <div className="filterCheck">
-                            <input type="checkbox" name="gheeVal" id="gheeVal" className='check' onChange={handleFilterChange} value={filterVal.gheeVal ? false : true} ref={(element) => { ref.current[2] = element }} />
+                            <input type="checkbox" name="gheeVal" id="gheeVal" className='check' onChange={handleFilterChange} value={filterVal.gheeVal === 'true' ? false : true} ref={(element) => { ref.current[2] = element }} />
                             <label htmlFor="gheeVal">Ghee</label>
                         </div>
                         {/* Butter */}
                         <div className="filterCheck">
-                            <input type="checkbox" name="butterVal" id="butterVal" className='check' onChange={handleFilterChange} value={filterVal.butterVal ? false : true} ref={(element) => { ref.current[3] = element }} />
+                            <input type="checkbox" name="butterVal" id="butterVal" className='check' onChange={handleFilterChange} value={filterVal.butterVal === 'true' ? false : true} ref={(element) => { ref.current[3] = element }} />
                             <label htmlFor="butterVal">Butter</label>
                         </div>
                     </div>
@@ -149,7 +152,7 @@ const Product = (props) => {
                     {/* Filter By Date */}
                     <div className="filterDate">
                         <h6><div className="dot"></div>Date</h6>
-                        <input type="date" name="dateVal" id="date" min="2023-03-25" max={new Date().getFullYear().toString() + "-12-31"} onChange={handleFilterChange} value={filterVal.dateVal} />
+                        <input type="date" name="dateVal" id="date" min="2023-01-01" max={new Date().getFullYear().toString() + "-12-31"} onChange={handleFilterChange} value={filterVal.dateVal} />
                     </div>
 
                     <hr />
@@ -169,9 +172,6 @@ const Product = (props) => {
                             value={filterVal.priceVal}
                         />
                     </div>
-
-                    {/* Button Filter */}
-                    <FilterAltIcon onClick={filterSort} style={{ alignSelf: 'center', marginTop: '5px', cursor: 'pointer' }} />
                 </div>
 
                 {/* Product Part */}
@@ -192,8 +192,8 @@ const Product = (props) => {
                                     <button className='stock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'Out of Stock'}</button>
                                     {/* Price */}
                                     <div className="price">
-                                        <p><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
-                                        <p className="fadePrice">
+                                        <p style={{marginBottom:'0px'}}><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
+                                        <p className="fadePrice" style={{marginBottom:'0px'}}>
                                             {elem.quantity}
                                         </p>
                                     </div>

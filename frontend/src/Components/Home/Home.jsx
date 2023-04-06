@@ -36,7 +36,7 @@ const Home = (props) => {
     }
 
     // Map the Product
-    const prodList = props.AllProdList.slice(0,6).map((elem, index) =>
+    const prodList = props.AllProdList.slice(0, 6).map((elem, index) =>
         <div className="card" style={{ width: '17rem' }} key={index}>
             {/* Product Img */}
             <img src={elem.product_img} alt="" className='card-img-top' />
@@ -50,13 +50,13 @@ const Home = (props) => {
                 <button className='stock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'Out of Stock'}</button>
                 {/* Price */}
                 <div className="price">
-                    <p><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
-                    <p className="fadePrice">
+                    <p style={{ marginBottom: '0px' }}><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
+                    <p className="fadePrice" style={{ marginBottom: '0px' }}>
                         {elem.quantity}
                     </p>
                 </div>
             </div>
-            <Link to={`/products/${elem.id}`} className="btn btn-outline-info align-self-center" style={{margin:'0 40%'}}>View</Link>
+            <Link to={`/products/${elem.id}`} className="btn btn-outline-info align-self-center" style={{ margin: '0 40%' }}>View</Link>
         </div>
     );
 
@@ -148,7 +148,7 @@ const Home = (props) => {
                 </div>
 
                 {/* Services */}
-                <div className="container3" id='services'>
+                <div className="container7" id='services'>
                     <h2>Our Services</h2>
                     <div className="content-box2">
                         {/* Let Out */}

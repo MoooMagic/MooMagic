@@ -84,13 +84,10 @@ const UserProduct = () => {
                   </button>
                   {/* Price */}
                   <div className="price">
-                    <p>
-                      <strong>
-                        <CurrencyRupeeIcon />
-                        {elem.price}
-                      </strong>
+                    <p style={{ marginBottom: '0px' }}><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
+                    <p className="fadePrice" style={{ marginBottom: '0px' }}>
+                      {elem.quantity}
                     </p>
-                    <p className="fadePrice">{elem.quantity}</p>
                   </div>
                   <div className="lowerBtn">
                     <EditIcon style={{ color: 'blue' }} onClick={editPerProduct} />

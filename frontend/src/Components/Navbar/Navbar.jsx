@@ -69,6 +69,13 @@ const Navbar = (props) => {
         }
     }
 
+    const handleSearchKeyPress = (e) => {
+        console.log("Hello")
+        if (e.key === "Enter") {
+            searchBarData();
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('userid');
@@ -128,7 +135,7 @@ const Navbar = (props) => {
                         {/* Search Bar */}
                         <div className="search-nav">
                             <input type="text" name="data" id="" placeholder='Search' value={searchData.data} onChange={handleSearch} />
-                            <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={searchBarData} />
+                            <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={searchBarData} onKeyPress={handleSearchKeyPress} />
                         </div>
                     </div>
 

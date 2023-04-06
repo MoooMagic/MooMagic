@@ -15,7 +15,7 @@
     position: sticky;
     top: 95px;
     width: 20%;
-    height: 84vh;
+    min-height: 84vh;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -309,7 +309,7 @@
     justify-content: space-between;
     align-items: center;
     color: #000000;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .productsPage .productSide .card .price .fadePrice {

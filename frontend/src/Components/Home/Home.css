@@ -216,7 +216,7 @@ video {
     justify-content: space-between;
     align-items: center;
     color: #000000;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .container4 .boxHome .card .price .fadePrice {
@@ -241,7 +241,7 @@ video {
     flex-direction: column;
 }
 
-.content-box1 {
+.container2 .content-box1 {
     width: 42%;
     display: flex;
     justify-content: center;
@@ -250,7 +250,7 @@ video {
     flex-direction: column;
 }
 
-.content-box1 .card-title {
+.container2 .content-box1 .card-title {
     width: 80%;
     font-size: 2.5rem;
     font-family: "Calibri", sans-serif;
@@ -261,7 +261,7 @@ video {
     text-transform: lowercase;
 }
 
-.content-box1 .card-title strong {
+.container2 .content-box1 .card-title strong {
     font-size: 3rem;
     font-weight: 800;
     color: #FFFFFF;
@@ -293,7 +293,7 @@ video {
 }
 
 /* Services */
-.container3 {
+.container7 {
     width: 100%;
     background-image: url("./Assets/back.png");
     background-size: cover;
@@ -306,7 +306,7 @@ video {
     position: relative;
 }
 
-.container3 h2 {
+.container7 h2 {
     font-family: "Calibri", sans-serif;
     font-weight: 600;
     color: #310D98;
@@ -319,14 +319,15 @@ video {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.content-box2 {
+.container7 .content-box2 {
     width: 85%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.content-box2 .servicesBox {
+.container7 .content-box2 .servicesBox {
     width: 25%;
     height: 450px;
     margin-top: 20px;
@@ -341,14 +342,14 @@ video {
     margin-bottom: 25px;
 }
 
-.content-box2 .servicesBox .card-body {
+.container7 .content-box2 .servicesBox .card-body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
 }
 
-.content-box2 .servicesBox .card-body .card-title {
+.container7 .content-box2 .servicesBox .card-body .card-title {
     align-self: center;
     font-size: 1.5rem;
     font-weight: 600;
@@ -357,14 +358,14 @@ video {
     margin-top: 0;
 }
 
-.content-box2 .servicesBox .card-body .card-text {
+.container7 .content-box2 .servicesBox .card-body .card-text {
     padding-bottom: 15px;
     font-size: 1.1rem;
     color: #000000;
     font-weight: 600;
 }
 
-.content-box2 .servicesBox .servicesImg {
+.container7 .content-box2 .servicesBox .servicesImg {
     width: 100%;
     height: 220px;
     border-top-left-radius: 20px;
@@ -433,7 +434,7 @@ video {
         align-items: center;
         flex-direction: column;
         color: black;
-        padding-bottom: 20px;
+        padding: 40px 0;
     }
 
     .container2 h2 {
@@ -441,19 +442,19 @@ video {
         font-weight: 600;
     }
 
-    .content-box1 {
+    .container2 .content-box1 {
         width: 100%;
         align-items: center;
         align-self: center;
     }
 
-    .content-box1 .card-title {
+    .container2 .content-box1 .card-title {
         width: 70%;
         color: #000000;
         font-weight: 500;
     }
 
-    .content-box1 .card-title strong {
+    .container2 .content-box1 .card-title strong {
         color: #000000;
     }
 
@@ -462,7 +463,7 @@ video {
     }
 }
 
-@media only screen and (max-width:1115px) {
+/* @media only screen and (max-width:1115px) {
     .content-box2 {
         flex-direction: column;
     }
@@ -471,10 +472,9 @@ video {
         width: 45%;
     }
 }
-
+*/
 @media only screen and (max-width:600px) {
-    .content-box2 .servicesBox {
-        width: 90%;
-        /* height: 400px; */
+    .container7 .content-box2 .servicesBox {
+        width: 85%;
     }
 }
