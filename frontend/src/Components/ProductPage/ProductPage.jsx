@@ -38,14 +38,14 @@ const ProductPage = (props) => {
     const [singleProduct, setsingleProduct] = useState(null)
 
     // Use Effect For Find Perticular Product
-   useEffect(() => {
-    axios.get(`http://localhost:5000/api/product/productid/${id}`)
-    .then(res=>{
-        setsingleProduct(res.data)
-    }).catch(err=>{
-        console.log(err)
-    })
-   }, [id])
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/product/productid/${id}`)
+            .then(res => {
+                setsingleProduct(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
+    }, [id])
 
     // Add to Cart Func
     const addToCart = () => {

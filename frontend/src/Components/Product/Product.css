@@ -320,3 +320,37 @@
     border-radius: 50%;
     font-weight: 600;
 }
+
+@media only screen and (max-width:890px) {
+    .productsPage .filterSide{
+        width: 23%;
+    }
+}
+
+@media only screen and (max-width:790px) {
+    .productsPage .filterSide{
+        width: 40%;
+    }
+    .productsPage .productSide{
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width:460px) {
+    .productsPage{
+        flex-direction: column;
+    }
+
+    .productsPage .productSide{
+        align-self: center;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .productsPage .filterSide{
+        position: static;
+        top: auto;
+        align-self: center;
+        width: 90%;
+    }
+}

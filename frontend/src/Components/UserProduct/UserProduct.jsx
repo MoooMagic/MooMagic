@@ -92,7 +92,7 @@ const UserProduct = () => {
                   <div className="lowerBtn">
                     <EditIcon style={{ color: 'blue' }} onClick={editPerProduct} />
 
-                    <Link to={`/products/${elem.id}`} className="btn btn-outline-info my-2">View</Link>
+                    <Link to={`/products/${elem._id}`} className="btn btn-outline-info my-2">View</Link>
 
                     <DeleteIcon style={{ color: 'red' }} onClick={deletePerProduct} />
                   </div>
