@@ -1,14 +1,29 @@
 .signUpMain{
   padding-top: 100px;
   width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.signUpMain .container{
+  min-height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
+  background: linear-gradient(57deg,rgb(146, 175, 255),white);
+}
+
+.signUpMain .card{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-style: none;
+  margin: 30px 0;
+  cursor: pointer;
+}
+
+.signUpMain .card .card-body{
+  background-color: rgba(3, 1, 15, 0.877);
+  color: white;
+  text-transform: capitalize;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

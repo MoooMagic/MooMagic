@@ -28,6 +28,7 @@ import "../node_modules/slick-carousel/slick/slick-theme.css";
 
 // Import React Router Dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SliderBoxProf from "./Components/SliderBoxProf/SliderBoxProf";
 
 
 
@@ -54,6 +55,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar setData={setData} />
+        <SliderBoxProf/>
         <Routes>
           <Route exact path="/" element={<Home AllProdList={AllProdList} />} />
           <Route exact path="/about" element={<About />} />

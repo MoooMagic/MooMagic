@@ -4,7 +4,7 @@
     position: fixed;
     background-color: #FFFFFF;
     width: 200px;
-    height: 100vh;
+    min-height: 100vh;
     z-index: 2;
     padding: 0 20px;
     justify-content: center;
@@ -14,6 +14,7 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     overflow-x: hidden;
     overflow-y: scroll;
+    top: 0;
 }
 
 /* CloseProfile */
@@ -36,6 +37,7 @@
     display: none;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     left: 0;
+    top: 50%;
 }
 
 .slideBoxProfile img {
