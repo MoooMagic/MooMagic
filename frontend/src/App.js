@@ -30,8 +30,6 @@ import "../node_modules/slick-carousel/slick/slick-theme.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SliderBoxProf from "./Components/SliderBoxProf/SliderBoxProf";
 
-
-
 function App() {
   // Search Data UseState
   const [data, setData] = useState("");
@@ -39,31 +37,34 @@ function App() {
   // All Product List
   const [AllProdList, setAllProdList] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   // Use Effect
   useEffect(() => {
-    async function fetchallproducts(){
+    async function fetchallproducts() {
       try {
-        const res=await axios.get("http://localhost:5000/api/product/allproducts")
+        const res = await axios.get("http://localhost:5000/api/product/allproducts")
         setAllProdList(res.data)
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
     }
     fetchallproducts();
-  },[]);
+  }, []);
   return (
     <>
       <BrowserRouter>
         <Navbar setData={setData} />
-        <SliderBoxProf/>
+        <SliderBoxProf />
         <Routes>
-          <Route exact path="/" element={<Home AllProdList={AllProdList} />} />
+          <Route exact path="/" element={<Home AllProdList={AllProdList} loading={{ loading, setLoading }} />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/privacy" element={<Privacy />} />
           <Route exact path="/signup" element={<SignUp />} />
-          <Route exact path="/signup-seller" element={<SignUpSeller/>}/>
-          <Route exact path="/signup-retailer" element={<SignUpRetailer/>}/>
+          <Route exact path="/signup-seller" element={<SignUpSeller />} />
+          <Route exact path="/signup-retailer" element={<SignUpRetailer />} />
           <Route exact path="/signin" element={<SignIn />} />
           <Route
             exact
@@ -73,18 +74,19 @@ function App() {
                 data={data}
                 setData={setData}
                 AllProdList={AllProdList}
+                loading={{ loading, setLoading }}
               />
             }
           />
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/edit-profile" element={<Profile />} />
+          <Route exact path="/profile" element={<Profile loading={{ loading, setLoading }} />} />
+          <Route exact path="/edit-profile" element={<Profile loading={{ loading, setLoading }} />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route
             exact
             path="/products/:id"
-            element={<ProductPage AllProdList={AllProdList} />}
+            element={<ProductPage AllProdList={AllProdList} loading={{ loading, setLoading }} />}
           />
-          <Route exact path="/user-product" element={<UserProduct />} />
+          <Route exact path="/user-product" element={<UserProduct loading={{ loading, setLoading }} />} />
           <Route exact path="/add-product" element={<AddUserProduct />} />
         </Routes>
         <Footer />

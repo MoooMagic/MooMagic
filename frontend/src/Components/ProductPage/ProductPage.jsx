@@ -26,6 +26,7 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import Swal from 'sweetalert2'
 // UseNavigate
 import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const ProductPage = (props) => {
     // UseNavigate
@@ -39,9 +40,11 @@ const ProductPage = (props) => {
 
     // Use Effect For Find Perticular Product
     useEffect(() => {
+        props.loading.setLoading(true);
         axios.get(`http://localhost:5000/api/product/productid/${id}`)
             .then(res => {
                 setsingleProduct(res.data)
+                props.loading.setLoading(false);
             }).catch(err => {
                 console.log(err)
             })
@@ -82,9 +85,10 @@ const ProductPage = (props) => {
 
     return (
         <>
-            {
-                singleProduct && (
-                    <div className="productPagePer">
+            <div className="productPagePer">
+                <Loader loading={props.loading.loading} />
+                {
+                    singleProduct && (
                         <div className="container">
                             <div className="row">
                                 {/* Left Product Image Logo */}
@@ -182,9 +186,10 @@ const ProductPage = (props) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                )
-            }
+
+                    )
+                }
+            </div>
         </>
     )
 }

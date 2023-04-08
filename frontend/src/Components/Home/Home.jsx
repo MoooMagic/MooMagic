@@ -20,9 +20,9 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import Slider from "react-slick";
 
 import { Link } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 
 const Home = (props) => {
-
     const navigate = useNavigate();
 
     // Go to Service Portion
@@ -127,6 +127,7 @@ const Home = (props) => {
                 <div className="container4">
                     <h2>Our Products</h2>
                     <div className="boxHome">
+                        <Loader loading={props.loading.loading} />
                         <Slider {...settings}>
                             {prodList}
                         </Slider>

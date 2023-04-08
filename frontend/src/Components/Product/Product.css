@@ -226,6 +226,7 @@
 /* Product Side */
 .productsPage .productSide {
     width: 76%;
+    min-height: 84vh;
     border-radius: 4px;
     align-self: flex-start;
     display: flex;

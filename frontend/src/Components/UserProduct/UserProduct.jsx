@@ -13,8 +13,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import axios from "axios";
+import Loader from "../Loader/Loader"
 
-const UserProduct = () => {
+const UserProduct = (props) => {
   const navigate = useNavigate();
 
   const [showUserProd, setshowUserProd] = useState([]);
@@ -26,12 +27,14 @@ const UserProduct = () => {
       return window.location.href = "/signin";
     }
     else {
+      props.loading.setLoading(true);
       axios.get(`http://localhost:5000/api/product/productbyuser/${userid}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       }).then((res) => {
         setshowUserProd(res.data);
+        props.loading.setLoading(false);
       }).catch((err) => {
         console.log(err);
       })
@@ -60,6 +63,7 @@ const UserProduct = () => {
         </button>
 
         <div className="userProductSide">
+        <Loader loading={props.loading.loading} />
           {showUserProd.length !== 0 ? (
             showUserProd.map((elem, index) => (
               <div className="card" style={{ width: "17rem" }} key={index}>
