@@ -33,3 +33,43 @@
     padding: 70px 200px;
     margin-bottom: 40px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .privacy-container1 h2 {
+        font-size: 4rem;
+        margin-top: 30px;
+    }
+    
+    .privacy-container2 p {
+        font-size: 1.6rem;
+        padding: 50px 150px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .privacy-container1 {
+        height: 100vh;
+    }
+    
+    .privacy-container1 h2 {
+        font-size: 4rem;
+        margin-top: 20px;
+    }
+    
+    .privacy-container2 p {
+        font-size: 1.6rem;
+        padding: 40px 100px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .privacy-container1 h2 {
+        font-size: 3rem;
+        margin-top: 10px;
+    }
+    
+    .privacy-container2 p {
+        font-size: 1.2rem;
+        padding: 20px 50px;
+    }
+}

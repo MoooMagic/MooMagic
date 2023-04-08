@@ -37,13 +37,60 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+}
 
-  .contact2 {
+.contact2 {
     display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 30%;
-  }
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
 
-  
+@media only screen and (max-width: 1200px) {
+    .contact1 h2 {
+        font-size: 4rem;
+        margin-top: 40px;
+    }
+    
+    .contact1 p {
+        font-size: 2rem;
+        padding: 30px 30px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .contact1 {
+        height: 100vh;
+    }
+    
+    .contact1 h2 {
+        font-size: 4rem;
+        margin-top: 30px;
+    }
+    
+    .contact1 p {
+        font-size: 1.5rem;
+        padding: 20px 20px;
+    }
+    
+    .form-container {
+        flex-direction: column;
+    }
+    
+    .contact2 {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .contact1 h2 {
+        font-size: 3rem;
+        margin-top: 20px;
+    }
+    
+    .contact1 p {
+        font-size: 1.2rem;
+        padding: 10px 10px;
+    }
+}
