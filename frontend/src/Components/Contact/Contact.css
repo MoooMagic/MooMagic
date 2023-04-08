@@ -56,19 +56,29 @@
         font-size: 2rem;
         padding: 30px 30px;
     }
+    .form-container {
+        flex-direction: column;
+    }
+    .contact2 {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 992px) {
     .contact1 {
+        align-items: center;
         height: 100vh;
     }
     
     .contact1 h2 {
+        align-items: center;
         font-size: 4rem;
         margin-top: 30px;
     }
     
     .contact1 p {
+        align-items: center;
         font-size: 1.5rem;
         padding: 20px 20px;
     }
@@ -85,12 +95,20 @@
 
 @media only screen and (max-width: 576px) {
     .contact1 h2 {
+        align-items: center;
         font-size: 3rem;
         margin-top: 20px;
     }
     
     .contact1 p {
+        width: 100%;
+        align-items: center;
         font-size: 1.2rem;
         padding: 10px 10px;
     }
+
+    .contact2 img {
+        display: none;
+      }
+
 }
