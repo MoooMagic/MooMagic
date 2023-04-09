@@ -14,6 +14,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { useNavigate } from 'react-router-dom'
 
 import { Link } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const Product = (props) => {
     // Use Navigate
@@ -34,8 +35,10 @@ const Product = (props) => {
 
     // UseEffect for Load All Product
     useEffect(() => {
+        props.loading.setLoading(true);
         if (props.AllProdList.length > 0) {
             setProductList(props.AllProdList);
+            props.loading.setLoading(false);
         }
     }, [props.AllProdList])
 
@@ -176,6 +179,7 @@ const Product = (props) => {
 
                 {/* Product Part */}
                 <div className="productSide">
+                    <Loader loading={props.loading.loading} />
                     {productList.length !== 0 ?
                         productList.map((elem, index) =>
                             // Product Head
@@ -192,8 +196,8 @@ const Product = (props) => {
                                     <button className='stock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'Out of Stock'}</button>
                                     {/* Price */}
                                     <div className="price">
-                                        <p style={{marginBottom:'0px'}}><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
-                                        <p className="fadePrice" style={{marginBottom:'0px'}}>
+                                        <p style={{ marginBottom: '0px' }}><strong><CurrencyRupeeIcon />{elem.price}</strong></p>
+                                        <p className="fadePrice" style={{ marginBottom: '0px' }}>
                                             {elem.quantity}
                                         </p>
                                     </div>

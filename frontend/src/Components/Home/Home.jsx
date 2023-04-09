@@ -19,12 +19,10 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 // Slider
 import Slider from "react-slick";
 
-import SliderBoxProf from '../SliderBoxProf/SliderBoxProf'
-
 import { Link } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 
 const Home = (props) => {
-
     const navigate = useNavigate();
 
     // Go to Service Portion
@@ -56,7 +54,7 @@ const Home = (props) => {
                     </p>
                 </div>
             </div>
-            <Link to={`/products/${elem.id}`} className="btn btn-outline-info align-self-center" style={{ margin: '0 40%' }}>View</Link>
+            <Link to={`/products/${elem._id}`} className="btn btn-outline-info align-self-center" style={{ margin: '0 40%' }}>View</Link>
         </div>
     );
 
@@ -104,7 +102,6 @@ const Home = (props) => {
             <div className="box">
                 {/* Welcome Page */}
                 <div className="container1">
-                    <SliderBoxProf />
                     {/* Video */}
                     <video src={cowFarmer} autoPlay loop muted />
                     {/* Text */}
@@ -130,6 +127,7 @@ const Home = (props) => {
                 <div className="container4">
                     <h2>Our Products</h2>
                     <div className="boxHome">
+                        <Loader loading={props.loading.loading} />
                         <Slider {...settings}>
                             {prodList}
                         </Slider>

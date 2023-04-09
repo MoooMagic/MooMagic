@@ -23,8 +23,9 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 // Profile Logo
 import profileLogo from './profileLogo.jpg'
 import axios from 'axios';
+import Loader from '../Loader/Loader'
 
-const Profile = () => {
+const Profile = (props) => {
     const [profVal, setProfVal] = useState({
         prof: true,
         editProf: false
@@ -47,22 +48,25 @@ const Profile = () => {
             return window.location.href = "/signin";
         }
         else {
+            props.loading.setLoading = (true);
             axios.get(`http://localhost:5000/api/auth/user/${user}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             }).then((res) => {
                 setUser(res.data)
+                props.loading.setLoading = (true);
             }).catch((err) => {
                 console.log(err);
             })
         }
 
-    }, []);
+    }, [props.loading]);
 
     return (
         <>
             <div className="dashboard">
+            <Loader loading={props.loading.loading} />
                 <div className="container">
                     <div className="profNav">
                         {/* Profile Nav */}

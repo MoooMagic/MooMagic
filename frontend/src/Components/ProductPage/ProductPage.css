@@ -1,5 +1,6 @@
 .productPagePer{
     width: 100%;
+    min-height: 100vh;
     padding-top: 100px;
     display: flex;
     justify-content: center;
@@ -139,4 +140,11 @@
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     padding: 10px;
+}
+
+@media only screen and (max-width:767px) {
+    .productPagePer .col-md-4{
+        position:static;
+        top:auto;
+    }
 }

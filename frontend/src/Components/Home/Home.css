@@ -463,16 +463,6 @@ video {
     }
 }
 
-/* @media only screen and (max-width:1115px) {
-    .content-box2 {
-        flex-direction: column;
-    }
-
-    .content-box2 .servicesBox {
-        width: 45%;
-    }
-}
-*/
 @media only screen and (max-width:600px) {
     .container7 .content-box2 .servicesBox {
         width: 85%;
