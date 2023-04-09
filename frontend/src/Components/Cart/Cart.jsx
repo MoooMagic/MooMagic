@@ -12,51 +12,52 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 // Delete Icon
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2';
 
 const Cart = () => {
     // Use State
     const [cartProd, setCartProd] = useState([]);
+    const [totalprice, setTotalprice] = useState(0);
 
     useEffect(() => {
-        const loadCartProduct = async () => {
-            // axios.get('/api/').then(res=>{
-
-            // })
-            setCartProd([
-                {
-                    id: 0,
-                    product_img: "https://patankarfarmproducts.com/wp-content/uploads/2020/08/500-ml-ghee.jpg",
-                    product_name: "Ghee",
-                    product_desc: "Masti Masti",
-                    price: 550,
-                    quantity: "50L",
-                    InStock: true,
-                    updatedAt: "2023-03-18T20:32:07.039+00:00",
-                    store: 1
-                },
-                {
-                    id: 1,
-                    product_img: "https://rukminim1.flixcart.com/image/416/416/l16rde80/milk/s/u/v/1-taaza-homogenised-toned-milk-1-l-tetra-pak-box-toned-amul-original-imagcsyy9spcwwgp.jpeg?q=70",
-                    product_name: "Milky Mist Toned Milk (UHT)",
-                    product_desc: "Masti Masti Masti Masti Masti MastiMasti MastiMasti MastiMasti MastiMasti",
-                    price: 550,
-                    quantity: "50L",
-                    InStock: true,
-                    updatedAt: "2023-03-18T20:32:07.039+00:00",
-                    store: 1
-                }
-            ])
-        };
-        loadCartProduct();
+        const token=localStorage.getItem('token')
+        axios.get('http://localhost:5000/api/cart/getcart',{
+            headers:{
+                'Authorization':`Bearer ${token}`}
+        }).then(res=>{
+            setCartProd(res.data.products)
+        }).catch(err=>{ console.log(err)})
     }, [])
-
+useEffect(()=>{
+    const token=localStorage.getItem('token')
+        axios.get('http://localhost:5000/api/cart/getcart',{
+            headers:{
+                'Authorization':`Bearer ${token}`}
+        }).then(res=>{
+            setTotalprice(res.data.totalprice)
+        }).catch(err=>{ console.log(err)})
+    }, [])
 
     const deleteCartProduct=(id)=>{
 
     }
 
     const deleteAllCartProduct=()=>{
-
+        const token=localStorage.getItem('token')
+        axios.delete('http://localhost:5000/api/cart/removecart',{
+            headers:{
+                'Authorization':`Bearer ${token}`
+            }
+        }).then(res=>{
+            setCartProd([])
+            setTotalprice(0)
+            Swal.fire({
+                icon: 'success',
+                title: 'Cart Cleared',
+                text: 'Cart Cleared Successfully',
+            })
+            window.href.location.reload()
+        }).catch(err=>{ console.log(err)})
     }
 
     return (
@@ -92,7 +93,7 @@ const Cart = () => {
                                 setCartProd(newCartProd);
                             }} />
                             {/* Value */}
-                            <p style={{ fontSize: '1.2rem', width: '50px', textAlign: 'center', alignSelf: 'center' }}>{elem.store}</p>
+                            <p style={{ fontSize: '1.2rem', width: '50px', textAlign: 'center', alignSelf: 'center' }}>{elem.quantity}</p>
                             {/* Decrease */}
                             <RemoveCircleIcon style={{ fontSize: '2rem', cursor: 'pointer' }} onClick={() => {
                                 if (elem.store === 1) {
@@ -113,7 +114,6 @@ const Cart = () => {
                             {/* Delete */}
                             <DeleteIcon style={{ color: 'red', cursor: 'pointer' }} onClick={deleteCartProduct(elem.id)}/>
                             {/* Total Price */}
-                            <h6 style={{ padding: '5px 10px', backgroundColor: 'white', borderRadius: '5px', marginTop: '30px' }}>Total Price = <CurrencyRupeeIcon /> {elem.price * elem.store}</h6>
                         </div>
                     </div>
                 )
@@ -121,7 +121,7 @@ const Cart = () => {
                         <div className="text-center container">
                             <h4>No products have been added yet</h4>
                         </div></>}
-
+                        <h6 style={{ padding: '5px 10px', backgroundColor: 'white', borderRadius: '5px', marginTop: '30px' }}>Total Price = <CurrencyRupeeIcon /> {totalprice}</h6>
             </div>
         </>
     )

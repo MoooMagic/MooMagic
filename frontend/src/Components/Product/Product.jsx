@@ -198,7 +198,7 @@ const Product = (props) => {
                                         </p>
                                     </div>
                                 </div>
-                                <Link to={`/products/${elem._id}`} className="btn btn-outline-info my-2">View</Link>
+                                <Link to={`/products/${elem._id.toString()}`} className="btn btn-outline-info my-2">View</Link>
                             </div>
                         ) :
                         <div className="text-center container">

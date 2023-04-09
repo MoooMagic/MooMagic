@@ -49,35 +49,37 @@ const ProductPage = (props) => {
 
     // Add to Cart Func
     const addToCart = () => {
-        // axios.post('/api/',singleProduct).then(res=>{
-        //     Swal.fire({
-        //         icon:'success',
-        //         title:'Product has been added',
-        //    confirmButtonText: 'Ok'
-        //       }).then((result) => {
-        //         if(result){
-        //             navigate('/cart')
-        //         }
-        //         else{
-        //             navigate('/cart')
-        //         }
-        //       })
-        // })
+        const token=localStorage.getItem('token')
+        const userid=localStorage.getItem('userid')
+        if(!token & !userid){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Login First!',
+            })
+            navigate('/login')
+        }else{
+            axios.post('http://localhost:5000/api/cart/addcart', {
+                products:[{ product_id:id,
+                    product_name:singleProduct.product_name||'',
+                    product_desc:singleProduct.product_desc||'',
+                    product_img:singleProduct.product_img||'',
+                    quantity:1,
+                    price:singleProduct.price}]
+               },{
+                    headers:{
+                        'Authorization':`Bearer ${token}`
+                }}).then(res=>{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added to Cart',
+                        text: 'Product Added to Cart Successfully',
+                    })
+                }).catch(err=>{
+                    console.log(err)
+                })
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Product has been added',
-            confirmButtonText: 'Ok'
-        }).then((result) => {
-            if (result) {
-                navigate('/cart')
             }
-            else {
-                navigate('/cart')
-            }
-        })
-
-        console.log(singleProduct)
     }
 
     return (
