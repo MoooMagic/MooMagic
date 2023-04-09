@@ -55,6 +55,7 @@ const ProductPage = (props) => {
         const token=localStorage.getItem('token')
         const userid=localStorage.getItem('userid')
         if(!token & !userid){
+            window.location.href='/signin'
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
