@@ -45,6 +45,7 @@ const ProductPage = (props) => {
             .then(res => {
                 setsingleProduct(res.data)
                 props.loading.setLoading(false);
+                console.log(res.data)
             }).catch(err => {
                 console.log(err)
             })
@@ -52,38 +53,41 @@ const ProductPage = (props) => {
 
     // Add to Cart Func
     const addToCart = () => {
-        const token=localStorage.getItem('token')
-        const userid=localStorage.getItem('userid')
-        if(!token & !userid){
-            window.location.href='/signin'
+        const token = localStorage.getItem('token')
+        const userid = localStorage.getItem('userid')
+        if (!token & !userid) {
+            window.location.href = '/signin'
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Please Login First!',
             })
             navigate('/login')
-        }else{
+        } else {
             axios.post('http://localhost:5000/api/cart/addcart', {
-                products:[{ product_id:id,
-                    product_name:singleProduct.product_name||'',
-                    product_desc:singleProduct.product_desc||'',
-                    product_img:singleProduct.product_img||'',
-                    quantity:1,
-                    price:singleProduct.price}]
-               },{
-                    headers:{
-                        'Authorization':`Bearer ${token}`
-                }}).then(res=>{
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Added to Cart',
-                        text: 'Product Added to Cart Successfully',
-                    })
-                }).catch(err=>{
-                    console.log(err)
+                products: [{
+                    product_id: id,
+                    product_name: singleProduct.product_name || '',
+                    product_desc: singleProduct.product_desc || '',
+                    product_img: singleProduct.product_img || '',
+                    quantity: 1,
+                    price: singleProduct.price
+                }]
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Added to Cart',
+                    text: 'Product Added to Cart Successfully',
                 })
+            }).catch(err => {
+                console.log(err)
+            })
 
-            }
+        }
     }
 
     return (
@@ -102,9 +106,12 @@ const ProductPage = (props) => {
 
                                     <div className="buttonPro">
                                         {
-                                            singleProduct.InStock ? <button className='btn btn-outline-primary'> <FlashOnIcon /> Buy Now</button> : <></>
+                                            singleProduct.createdBy === localStorage.getItem("userid") ? <></> : <button className='btn btn-outline-primary'> <FlashOnIcon /> Buy Now</button>
                                         }
-                                        <button className='btn btn-success' onClick={addToCart}><ShoppingCartIcon /> Add to Cart</button>
+                                        {
+                                            singleProduct.createdBy === localStorage.getItem("userid") ? <></> : <button className='btn btn-success' onClick={addToCart}><ShoppingCartIcon /> Add to Cart</button>
+                                        }
+
                                     </div>
                                 </div>
                                 {/* Right Product Image Details */}

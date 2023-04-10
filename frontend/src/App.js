@@ -80,7 +80,7 @@ function App() {
           />
           <Route exact path="/profile" element={<Profile loading={{ loading, setLoading }} />} />
           <Route exact path="/edit-profile" element={<Profile loading={{ loading, setLoading }} />} />
-          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/cart" element={<Cart loading={{ loading, setLoading }}/>} />
           <Route
             exact
             path="/products/:id"
