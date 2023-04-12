@@ -125,9 +125,6 @@ const ProductPage = (props) => {
                                         <CurrencyRupeeIcon /> {singleProduct.price}
                                     </div>
                                     {/* Manufacture Date */}
-                                    <p><CalendarMonthIcon /> Manufacture Date : </p>
-                                    {/* Expire Date */}
-                                    <p><CalendarMonthIcon /> Expire Date : </p>
                                     {/* Quantity */}
                                     <p>Quantity  <button className='perQuan'>{singleProduct.quantity}</button></p>
                                     {/* Services */}
@@ -144,55 +141,7 @@ const ProductPage = (props) => {
                                     <button className='stock' style={{ backgroundColor: singleProduct.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{singleProduct.InStock ? 'Available' : 'Not Available'}</button>
 
                                     {/* Seller Details */}
-                                    <p>
-                                        <StorefrontIcon /> Seller : Super Com Net
-                                    </p>
 
-                                    <div className="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th className='text-center'>Specifications</th>
-                                            </tr>
-
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>
-                                                    Brand
-                                                </td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    Flavor
-                                                </td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    Type
-                                                </td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    Quantity
-                                                </td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    Container Type
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </div>
                                 </div>
                             </div>
                         </div>

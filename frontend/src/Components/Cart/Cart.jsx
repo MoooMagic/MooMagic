@@ -93,8 +93,14 @@ const Cart = (props) => {
     useEffect(() => {
         const fetchUser = async () => {
             const userId=localStorage.getItem('userid')
+            const token = localStorage.getItem('token')
           try {
-            const res = await axios.get(`/user/${userId}`);
+            const res = await axios.get(`http://localhost:5000/api/auth/user/${userId}`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const { name, email, phonenumber } = res.data;
             setUser({ name, email, phonenumber });
           } catch (error) {
@@ -144,7 +150,7 @@ const Cart = (props) => {
 
     const handlePayment = (data) => {
         const options = {
-            key:'rzp_test_AwXg3aDxlOEEFM',
+            key:process.env.KEY,
             amount:data.amount,
             currency:data.currency,
             order_id:data.id,
@@ -153,8 +159,6 @@ const Cart = (props) => {
             image:'',
             
             handler:function(response){
-                alert(response)
-                console.log(response)
                 axios.post('http://localhost:5000/api/razorpay/verify',{
                     razorpay_order_id: response.razorpay_order_id,
     razorpay_payment_id: response.razorpay_payment_id,
@@ -185,9 +189,6 @@ const Cart = (props) => {
                 name:user.name,
                 email:user.email,
                 contact:user.phonenumber
-            },
-            notes:{
-                address:'Rajasthan'
             },
             theme:{
                 color:'#3399cc'

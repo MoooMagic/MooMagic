@@ -43,7 +43,7 @@ router.post('/register', async (req, res) => {
                 to: req.body.email,
                 subject: "Welcome moooooo's",
                 text: `Dear ${req.body.name},
-                Greetings!
+Greetings!
 
 We are delighted to welcome you as a new member of our community. Thank you for registering with us. We hope that your experience with us will be productive and enjoyable.
 
