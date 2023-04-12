@@ -170,7 +170,6 @@ const Navbar = (props) => {
 
                                         <span className="dropdown-item" onClick={() => { navigate('/user-product') }}><Inventory2Icon className='prof' />Your Products</span>
 
-                                        <span className="dropdown-item"><ViewListIcon className='prof' />Your Orders</span>
 
                                         <span className="dropdown-item" onClick={() => navigate('/cart')}><ShoppingCartIcon className='prof' />Cart</span>
 

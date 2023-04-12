@@ -26,6 +26,7 @@ const Cart = (props) => {
         count: 0,
         price: 0
     });
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -89,15 +90,120 @@ const Cart = (props) => {
             window.href.location.reload()
         }).catch(err => { console.log(err) })
     }
+    useEffect(() => {
+        const fetchUser = async () => {
+            const userId=localStorage.getItem('userid')
+          try {
+            const res = await axios.get(`/user/${userId}`);
+            const { name, email, phonenumber } = res.data;
+            setUser({ name, email, phonenumber });
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchUser();
+      }, []);
+    const createorder = () => {
+        const products = JSON.stringify(cartProd)
+        axios.post('http://localhost:5000/api/razorpay/createorder',{
+            amount:totalprice.price,
+            currency:'INR',
+            receipt:'receipt#1',
+            notes:{
+                products:"Products"
+            }
+        }).then(res=>{
+            handlePayment(res.data.data)
+            const deleteorder = () => {
+                const token = localStorage.getItem('token')
+                axios.delete('http://localhost:5000/api/cart/removecart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }).then(res => {
+                    setCartProd([])
+                    setTotalprice(0)
+                    window.href.location.reload()
+                }).catch(err => { console.log(err) })
+            }
+            deleteorder()
+                Swal.fire({
+                icon: 'success',
+                title: 'Order Created',
+                text: 'Order Created Successfully',
+            })
+           
+        }).catch(err=>{
+            console.log(err)
+            Swal.fire({
+                icon: 'error',
+                title: 'Server Error',
+                description: 'Server Error',
+            })})
+    }
+
+    const handlePayment = (data) => {
+        const options = {
+            key:'rzp_test_AwXg3aDxlOEEFM',
+            amount:data.amount,
+            currency:data.currency,
+            order_id:data.id,
+            name:'MooMagic',
+            description:'TIndias Own Dairy Farm',
+            image:'',
+            
+            handler:function(response){
+                alert(response)
+                console.log(response)
+                axios.post('http://localhost:5000/api/razorpay/verify',{
+                    razorpay_order_id: response.razorpay_order_id,
+    razorpay_payment_id: response.razorpay_payment_id,
+    razorpay_signature: response.razorpay_signature
+                })
+                .then(res=>{
+                    if(res.data.status === '200'){
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Payment Success',
+                            text: 'Payment Successfull',
+                        })}
+                        else if(res.data.status === '400'){
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Payment Failed',
+                                text: 'Payment Failed',
+                            })
+                        }
+                }).catch(err=>{
+                    console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Server Error',
+                })})
+            },
+            prefill:{
+                name:user.name,
+                email:user.email,
+                contact:user.phonenumber
+            },
+            notes:{
+                address:'Rajasthan'
+            },
+            theme:{
+                color:'#3399cc'
+            },
+        };
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+    };
 
     return (
         <>
             <div className="cart">
-                <Loader loading={props.loading.loading} />
                 <div className="cartLeft">
                     {/* Cart Head */}
                     {cartProd.length !== 0 ? <div className="cartHead">
-                        <button className='btn btn-info'>Place Order</button>
+                        <button className='btn btn-info' onClick={createorder}>Place Order</button>
                         <button onClick={deleteAllCartProduct} className='btn btn-outline-danger'>Remove All</button>
                     </div> : <></>}
 
@@ -109,7 +215,6 @@ const Cart = (props) => {
                                 {/* Product Image */}
                                 <img src={elem.product_img} alt="" />
                                 {/* Delete Product */}
-                                <DeleteIcon style={{ color: 'red', cursor: 'pointer', marginTop: '30px' }} onClick={deleteCartProduct(elem.id)} />
                             </div>
                             {/* Product Value Increase */}
                             <div className="cartProductDetails">
@@ -117,7 +222,7 @@ const Cart = (props) => {
                                 <h4>{elem.product_name}</h4>
                                 <p className='cartDesc'>{elem.product_desc}</p>
                                 <p className='cartQuan'>{elem.quantity}</p>
-                                <p className='cartStock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'Out of Stock'}</p>
+                                <p className='cartStock' style={{ backgroundColor: elem.InStock ? 'dodgerblue' : 'rgb(255, 70, 45)' }}>{elem.InStock ? 'In Stock' : 'In Stock'}</p>
 
                                 {/* Rupee */}
                                 <h5>

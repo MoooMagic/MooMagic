@@ -21,6 +21,7 @@ app.use('/api/auth', require('./controller/UserController'))
 app.use('/api/user', require('./controller/ContactUsController'))
 app.use('/api/product', require('./controller/ProductController'))
 app.use('/api/cart', require('./controller/CartController'))
+app.use('/api/razorpay', require('./controller/RazorpayController'))
 
 
 

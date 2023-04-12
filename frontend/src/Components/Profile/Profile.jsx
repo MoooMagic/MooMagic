@@ -66,7 +66,6 @@ const Profile = (props) => {
     return (
         <>
             <div className="dashboard">
-            <Loader loading={props.loading.loading} />
                 <div className="container">
                     <div className="profNav">
                         {/* Profile Nav */}
